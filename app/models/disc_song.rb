@@ -1,0 +1,2 @@
+class DiscSong < ApplicationRecord
+end
