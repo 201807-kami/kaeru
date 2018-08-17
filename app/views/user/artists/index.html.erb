@@ -2,3 +2,25 @@
 <%= link_to "item一覧へ", user_items_path %>
 
 <%= link_to "ジャンル一覧へ", user_genres_path %>
+
+
+
+<% @artist.each do |artist| %>
+
+<table>
+	<thead>
+		<tr>
+			<th>アーティスト名</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= artist.name %></td>
+			<td>詳細(後でリンクにする)</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<% end %>
