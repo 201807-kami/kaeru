@@ -20,9 +20,21 @@ Rails.application.routes.draw do
 
 
 	namespace :user, path: 'user' do
+<<<<<<< HEAD
 		resources :items, onry: [:index, :show]
 		resources :artists, onry: [:index]
 		resources :genres, onry: [:index]
     end
+=======
+		root 'users#top'
+		resources :items, only: [:index]
+		resources :users
+		get 'top' => 'users#top'
+
+		devise_scope :social_account do
+			get 'sign_out', to: "sessions#destroy"
+		end
+	end
+>>>>>>> change
 
 end
