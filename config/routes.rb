@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
 	namespace :admin, path: 'admin' do
 		root 'home#index', as: :root
-		resources :admins, only: [:edit]
+		resources :admins, only: [:index, :new, :create, :edit]
 		resources :items, only: [:index, :new, :create]
 		resources :artists, only: [:index, :new, :create]
 	end
