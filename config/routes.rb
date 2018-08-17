@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 	  registrations: 'user/users/registrations'
 	}
 
+
 	namespace :admin, path: 'admin' do
 		root 'home#index', as: :root
 		resources :admins, only: [:edit]
@@ -17,8 +18,10 @@ Rails.application.routes.draw do
 		resources :artists, only: [:index, :new, :create]
 	end
 
-	namespace :user, path: 'user' do
-		resources :items, only: [:index]
-	end
+
+  namespace :user, path: 'user' do
+  resources :items, onry: [:index, :show]
+  resources :artists, onry: [:index]
+ end
 
 end
