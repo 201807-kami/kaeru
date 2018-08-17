@@ -1,0 +1,30 @@
+<table class="table table-striped"> 
+	<h1>Items index</h1>
+	<thead>
+		<tr>
+				<th>ID</th>
+				<th>商品名</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @items.each do |item| %>
+
+			<tr>
+				<td><%= item.id %></td>
+				<td></td>
+				<td><%= item.title %></td>
+				<td><% item.discs.each do |disc| %>
+						<%= disc.disc_number%>
+						<% disc.songs.each do |song| %>
+							<%= song.name %>
+						<% end %>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+
+</table>
+		
+
