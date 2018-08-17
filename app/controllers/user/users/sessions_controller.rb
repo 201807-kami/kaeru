@@ -18,6 +18,11 @@ class User::Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def destroy
+    super
+    session[:keep_signed_out] = true
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
