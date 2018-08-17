@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 		resources :admins, only: [:index, :new, :create, :edit]
 		resources :items, only: [:index, :new, :create]
 		resources :artists, only: [:index, :new, :create]
+		resources :users, only: [:index]
 	end
 
 
