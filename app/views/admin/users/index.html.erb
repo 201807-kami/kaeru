@@ -1,0 +1,52 @@
+<div class='card'>
+  <div class='card-header pt-3'>
+    <p>会員一覧</p>
+  </div>
+  <div class='card-body'>
+    <%= form_for @search_form, as: 'search', url: admin_users_path, method: :get, html: {class: 'form-horizontal', id: 'form_user_search'} do |f| %>
+      <div class="form-group row">
+        <%= f.label :email, 'メールアドレス', class: 'col-2 col-form-label pr-0' %>
+        <div class="col-4">
+          <%= = f.text_field :email, class: 'form-control', placeholder: 'あいまい検索' %>
+        <%= = f.label :account_name, 'アカウント名', class: 'col-2 col-form-label pr-0 text-right' %>
+        </div>
+        <div class="col-4">
+          <%= f.text_field :account_name, class: 'form-control', placeholder: 'あいまい検索' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= f.label :created_at_from, '登録日', class: 'col-2 col-form-label pr-0' %>
+        <div class="col-6">
+          <div class="form-inline">
+            <%= f.date_field :created_at_from, class: 'form-control', value: @search_form.created_at_from %>
+            <span class="mx-1">
+            <%= f.date_field :created_at_to, class: 'form-control', value: @search_form.created_at_to %>
+            </span>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="form-check">
+            <label class="form-check-label">
+              <%= f.check_box "退会者も含む", :leaved, class: 'form-check-input' %>
+            </label>
+          </div>
+        </div>
+        <div class="col-2">
+          <%= f.submit '検 索', class: 'btn btn-primary btn-block' %>
+    <table class='table table-bordered table-sm'>
+      <thead>
+        <tr class='table-secondary'>
+          <th><%= t('activerecord.attributes.user.email')%></th>
+          <th><%= t('activerecord.attributes.user.account_name')%></th>
+          <th><%= t('activerecord.attributes.user.created_at')%></th>
+          <th class='text-center'>ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
