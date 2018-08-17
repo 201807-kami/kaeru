@@ -19,14 +19,14 @@ Rails.application.routes.draw do
 	end
 
 
+
 	namespace :user, path: 'user' do
-<<<<<<< HEAD
-		resources :items, onry: [:index, :show]
-		resources :artists, onry: [:index]
-		resources :genres, onry: [:index]
+		root 'user/top#index', as: :root
+		resources :items, only: [:index, :show]
+		resources :artists, only: [:index]
+		resources :genres, only: [:index]
     end
-=======
-		root 'users#top'
+
 		resources :items, only: [:index]
 		resources :users
 		get 'top' => 'users#top'
@@ -35,6 +35,3 @@ Rails.application.routes.draw do
 			get 'sign_out', to: "sessions#destroy"
 		end
 	end
->>>>>>> change
-
-end
