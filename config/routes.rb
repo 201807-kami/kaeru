@@ -19,9 +19,10 @@ Rails.application.routes.draw do
 	end
 
 
-  namespace :user, path: 'user' do
-  resources :items, onry: [:index, :show]
-  resources :artists, onry: [:index]
- end
+	namespace :user, path: 'user' do
+		resources :items, onry: [:index, :show]
+		resources :artists, onry: [:index]
+		resources :genres, onry: [:index]
+    end
 
 end
