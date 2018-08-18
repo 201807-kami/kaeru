@@ -8,15 +8,11 @@
 <table>
   <tr>
     <td>商品名</td>
-    <td>値段</td>
-    <td>アーティスト</td>
-    <td>ジャンル</td>
+    <td>アーティスト名</td>
   </tr>
   <tr>
     <td><%= item.title %></td>
-    <td><%= item.price %></td>
     <td><%= item.artist_id %></td>
-    <td><%= item.genre_id %></td>
     <td><%= link_to "詳細", user_item_path(item.id)%></td>
   </tr>
 </table>
