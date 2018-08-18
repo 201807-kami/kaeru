@@ -23,6 +23,7 @@
   Label.create!(id: 4, name: "スタジオ・ワン・レコード")
 
 
+
   Item.create!(id: 1, title: "ソング", price: "1000", stock: "2", sales_quantity: "20", release_date: "20180701", artist_id: 1, label_id: 1, genre_id: 1)
 
   Item.create!(id: 2, title: "ソナタ", price: "2000", stock: "2", sales_quantity: "20", release_date: "20180501", artist_id: 2, label_id: 2, genre_id: 2)
