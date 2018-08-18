@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins, path: 'admin/admins', controllers: {
+    devise_for :admins, path: 'admin/admins', controllers: {
 	  sessions:      'admin/admins/sessions',
 	  passwords:     'admin/admins/passwords',
 	  registrations: 'admin/admins/registrations'
@@ -13,10 +13,10 @@ Rails.application.routes.draw do
 
 	namespace :admin, path: 'admin' do
 		root 'home#index', as: :root
-		resources :admins, only: [:index, :new, :create, :edit]
-		resources :items, only: [:index, :new, :create]
-		resources :artists, only: [:index, :new, :create]
-		resources :users, only: [:index]
+		resources :admins, only: [:index, :new, :create, :edit, :update, :delete]
+		resources :items
+		resources :artists
+		resources :users, only: [:index, :show, :edit, :update]
 	end
 
     root to: 'user/users#top'
