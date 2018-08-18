@@ -11,7 +11,7 @@ class User::CartsController < ApplicationController
     end
 
 
-	def def delete
+	def delete
     	@cart_item.destroy
     	redirect_to current_cart
   	end
