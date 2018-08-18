@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 		resources :genres, only: [:index, :show]
 		resources :carts, only: [:show, :update, :delete]
         resources :order, only: [:show, :purchase_complete]
+        post '/purchase_complete' => 'order#purchase_complete'
     end
 
 		resources :items, only: [:index]

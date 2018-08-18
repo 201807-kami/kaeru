@@ -14,6 +14,6 @@ class User::ordersController < ApplicationController
 	end
 
 private
-  	def book_params
+  	def order_params
   		params.require(:order).permit(:cart_id)
  	end
