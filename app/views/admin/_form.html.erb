@@ -15,7 +15,7 @@
       <%= f.label :password, class: "col-sm-3 col-form-label text-right required" %>
       <% else %>
       <%= f.label :password, class: "col-sm-3 col-form-label text-right" %>
-    <% end %>  
+    <% end %>
       <%= f.password_field :password, class: 'form-control, col-sm-4', placeholder: "#{'変更する場合のみ入力してください' if f.object.persisted?}" %>
   </div>
   <div class="form-group row">
