@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 		resources :artists, only: [:index, :show]
 		resources :genres, only: [:index, :show]
 		resources :carts, only: [:show, :update, :delete]
+        resources :order, only: [:show, :purchase_complete]
     end
 
 		resources :items, only: [:index]
