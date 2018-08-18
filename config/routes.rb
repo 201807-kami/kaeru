@@ -38,7 +38,9 @@ Rails.application.routes.draw do
 		    end
 		  end
 		  #個人ページからお気に入りを削除する
-	    resources :favorites, only: [:destroy]
+	    resources :favorites, only: [:show, :destroy]
+	    #お気に入り機能実装ーーーーーー
+
 
 
 		resources :items, only: [:index]

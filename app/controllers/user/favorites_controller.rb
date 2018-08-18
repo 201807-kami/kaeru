@@ -12,10 +12,9 @@ class User::FavoritesController < ApplicationController
     @item_id = Item.find(params[:id]).id #特定のitemのid
     #item_idに@item_id、user_idに@user_idを入れて、Favoriteモデルに新しいオブジェクトを作る
     @favorite = Favorite.new(item_id: @item_id, user_id: @user_id)
-    if @favorite.save
+     @favorite.save
       #保存に成功した場合、本一覧画面に戻る
-      redirect_to user_items_path
-    end
+      redirect_to root_path
 end
 
   #お気に入り削除用アクション
