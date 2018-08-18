@@ -2,7 +2,7 @@
 
 class User::Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_permitted_parameters, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -59,4 +59,14 @@ class User::Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(:name, :email, :password, :password_confirmation, :current_password)
+    end
+  end
+
+
 end
