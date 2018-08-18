@@ -31,7 +31,6 @@ Rails.application.routes.draw do
     end
         #お気に入り機能実装routing
         resource :sessions, only: [:new, :create, :destroy]
-        resources :users #追加分
 
 		resources :items do
 		    member do #本一覧画面からお気に入り登録をする
