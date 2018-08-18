@@ -1,1 +1,20 @@
-show.html.ereb
+     <h2>cart 詳細ページ</h2>
+            <thead>
+		          <tr>
+						    <th>商品名</th>
+						    <th>数量</th>
+						    <th></th>
+
+				  </tr>
+			</thead>
+
+			<tbody>
+
+					<% @cart_items.each do |cart| %>
+						<tr>
+							<td><%= @cart_items %></td>
+							<td><%= @cart_item.quantity %></td>
+							<td><%= link_to "削除", destroy_cart_path(@cart.id),class:"edit_#{@book.id}" %></td>
+						</tr>>
+					<% end %>
+			</tbody>
