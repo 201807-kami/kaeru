@@ -2,7 +2,10 @@
             <thead>
 		          <tr>
 						    <th>商品名</th>
+						    <th>アーティスト</th>
+						    <th>価格</th>
 						    <th>数量</th>
+						    <th>小計</th>
 						    <th></th>
 
 				  </tr>
@@ -13,10 +16,13 @@
 					<% @cart_items.each do |cart| %>
 						<tr>
 							<td><%= @cart_items.title %></td>
+							<td><%= @cart_items.artist %></td>
+							<td><%= @cart_items.price %></td>
 							<td><%= @cart_item.quantity %></td>
+							<td></td>
 							<td><%= link_to "削除", destroy_cart_path(@cart.id),class:"edit_#{@book.id}" %></td>
 						</tr>>
 					<% end %>
 			</tbody>
 
-			<%= f.submit '注文画面へ'%>
+			<%= f.submit '購入手続きへ進む'%>

@@ -1,4 +1,6 @@
 class User::CartsController < ApplicationController
+
+
   def show
     @cart_items = current_cart.cart_items
     @cart_item.quantity += params[:quantity].to_i
@@ -14,9 +16,14 @@ class User::CartsController < ApplicationController
     redirect_to current_cart
   end
 
-  private
+private
 
   def setup_cart_item!
     @cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
   end
- end
+  def cart_params
+  	params.require(:cart).permit(:quantity, :item_id, :user_id)
+  end
+end
+
+end

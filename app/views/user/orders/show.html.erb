@@ -1,0 +1,38 @@
+<div class="container">
+     <div class="row">
+    	<div class="col-lg-9">
+    		<table>
+				<h1>注文内容を確認・変更する</h1>
+					<thead>
+
+						<tr>
+							<th>住所</th>
+							<th>支払方法</th>
+							<th></th>
+							<th></th>
+							<th></th>
+						</tr>
+
+					</thead>
+
+					<tbody>
+
+
+						<tr>
+							<td><%= f.text_area :payment, class:"order_payment" %></td>
+							<td><%= f.text_area :adress, class:"order_adress" %></td>
+						</tr>
+
+					</tbody>
+			</table>
+		</div>
+
+        <div class="col-lg-3">
+           <h2>お届け予定日</h2>
+           <%= f.submit '注文を確定する'%>
+		</div>
+	 </div>
+</div>
+
+
+
