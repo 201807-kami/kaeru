@@ -7,12 +7,14 @@
     <td>値段</td>
     <td>アーティスト</td>
     <td>ジャンル</td>
+    <td>発売日</td>
   </tr>
   <tr>
     <td><%= @item.title %></td>
     <td><%= @item.price %></td>
     <td><%= @item.artist_id %></td>
     <td><%= @item.genre_id %></td>
+    <td><%= @item.release_date %></td>
   </tr>
 </table>
 <%= link_to "item一覧へ", user_items_path %>
