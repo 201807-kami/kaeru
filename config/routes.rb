@@ -23,8 +23,8 @@ Rails.application.routes.draw do
 
 	namespace :user, path: 'user' do
 		resources :items, only: [:index, :show]
-		resources :artists, only: [:index]
-		resources :genres, only: [:index]
+		resources :artists, only: [:index :show]
+		resources :genres, only: [:index :show]
     end
 
 
