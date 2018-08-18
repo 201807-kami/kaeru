@@ -16,7 +16,7 @@
 	<tbody>
 		<tr>
 			<td><%= artist.name %></td>
-			<td>詳細(後でリンクにする)</td>
+			<td><%= link_to "詳細", user_artist_path(artist.id) %> </td>
 		</tr>
 	</tbody>
 </table>

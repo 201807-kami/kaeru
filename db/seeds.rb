@@ -6,22 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-  Artist.create!(id: 1, name: "安室")
+  Artist.create!(id: 1, name: "安室", description: "生まれは沖縄だよ" )
   Label.create!(id: 1, name: "エイベックス")
   Genre.create!(id: 1, name: "洋楽")
 
-  Artist.create!(id: 2, name: "木村")
+  Artist.create!(id: 2, name: "木村", description: "生まれは山梨だよ")
   Genre.create!(id: 2, name: "邦楽")
   Label.create!(id: 2, name: "ポニーキャニオン")
 
-  Artist.create!(id: 3, name: "Big")
+  Artist.create!(id: 3, name: "Big", description: "生まれは韓国のどこかだよ")
   Genre.create!(id: 3, name: "韓楽")
   Label.create!(id: 3, name: "チャーリー・レコード")
 
-  Artist.create!(id: 4, name: "cla")
+  Artist.create!(id: 4, name: "cla", description: "生まれは世界のどこかだよ")
   Genre.create!(id: 4, name: "jaz")
   Label.create!(id: 4, name: "スタジオ・ワン・レコード")
-
 
 
   Item.create!(id: 1, title: "ソング", price: "1000", stock: "2", sales_quantity: "20", release_date: "20180701", artist_id: 1, label_id: 1, genre_id: 1)
