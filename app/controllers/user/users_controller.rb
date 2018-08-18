@@ -14,10 +14,7 @@ class User::UsersController < ApplicationController
         @user.update(user_params)
         redirect_to user_path(@user.id)
     end
-    def destroy
-    	@user = current_user
-    	@user.soft_delete
-    	sign_out(@user)
-    end
+
+
 
 end

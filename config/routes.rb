@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'cancels/index'
     devise_for :admins, path: 'admin/admins', controllers: {
 	  sessions:      'admin/admins/sessions',
 	  passwords:     'admin/admins/passwords',
@@ -45,6 +46,7 @@ Rails.application.routes.draw do
 		scope module: :user do
 			resources :users, only: [:show, :edit]
 		end
+		#resources :cancels
 		# get 'top' => 'users#top'
 
 		devise_scope :social_account do
