@@ -6,10 +6,10 @@ class User::ordersController < ApplicationController
 		@order = order.find(params[:id])
 	if @order.save
     	flash[:notice] ='ご注文ありがとうございます'
-    	redirect_to 
+    	redirect_to
     else
    	 	flash.now[:notice]='danger'
-   		render 
+   		render
  	end
 	end
 

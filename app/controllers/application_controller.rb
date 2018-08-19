@@ -8,17 +8,19 @@ class ApplicationController < ActionController::Base
 		new_user_session_path
 	end
 
-	protect_from_forgery with: :exception
+	 # Prevent CSRF attacks by raising an exception.
+     # For APIs, you may want to use :null_session instead.
+  		protect_from_forgery with: :exception
 
+	private
+		def current_cart
 
-    helper_method :current_cart
+		Cart.find(session[:cart_id])
 
-  	def current_cart
-    	if session[:cart_id]
-      		@cart = Cart.find(session[:cart_id])
-    	else
-      		@cart = Cart.create
-      		session[:cart_id] = @cart.id
-    	end
-  	end
+		rescue ActiveRecord::RecordNotFound
+			cart = Cart.create
+			session[:cart_id] = cart.id
+			cart
+		end
+	
 end
