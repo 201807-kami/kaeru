@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/::'
-  get 'users/leave'
-  get 'cancels/index'
     devise_for :admins, path: 'admin/admins', controllers: {
 	  sessions:      'admin/admins/sessions',
 	  passwords:     'admin/admins/passwords',
