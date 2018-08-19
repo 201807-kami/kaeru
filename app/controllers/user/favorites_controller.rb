@@ -25,11 +25,6 @@ class User::FavoritesController < ApplicationController
 	     redirect_to user_path(session[:id])
     end
 
-    private
-
-    def favorite_params
-        params.require(:item).permit(:title, :price)
-    end
 end
 
 
