@@ -7,7 +7,7 @@ class User::ordersController < ApplicationController
 	if @order.save
     	flash[:notice] ='ご注文ありがとうございます'
     	redirect_to 
-    else
+  else
    	 	flash.now[:notice]='danger'
    		render 
  	end
