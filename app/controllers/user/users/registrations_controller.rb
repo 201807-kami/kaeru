@@ -60,8 +60,6 @@ class User::Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  private
-
 
 
 end
