@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
- order2
         belongs_to :carts
         has_many :items
 
@@ -15,5 +14,4 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :tel, presence: true, format: {with: /\A[0-9-]{,14}\z/}
 
- master
 end
