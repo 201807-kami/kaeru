@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 		resources :items, only: [:index, :show]
 		resources :artists, only: [:index, :show]
 		resources :genres, only: [:index, :show]
+		resources :favorites, only: [:index, :destroy]
 		resources :carts, only: [:show, :update, :delete]
         resources :order, only: [:show, :purchase_complete]
 
@@ -35,7 +36,6 @@ Rails.application.routes.draw do
   		delete '/delete' => 'carts#delete'
     end
 
-        resources :favorites, only: [:index, :destroy]
         #お気に入り機能実装routing
         resource :sessions, only: [:new, :create, :destroy]
 
