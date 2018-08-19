@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 		resources :users, only: [:index, :show, :edit, :update]
 	end
 
-
     root to: 'user/users#top'
 
 	namespace :user, path: 'user' do
@@ -41,11 +40,12 @@ Rails.application.routes.draw do
 
 
 
+
 		resources :items, only: [:index]
-		scope module: :user do
-			resources :users, only: [:show, :edit]
-		end
 		# get 'top' => 'users#top'
+		scope module: :user do
+			resources :users, only: [:show]
+		end
 
 		devise_scope :social_account do
 			get 'sign_out', to: "sessions#destroy"
