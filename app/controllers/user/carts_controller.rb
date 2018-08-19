@@ -1,9 +1,9 @@
 class User::CartsController < ApplicationController
 	 before_action :setup_cart_item!, only: [:add_item, :update, :delete]
 
-　	def add_item
+ 	def add_item
     	if @cart_item.blank?
-      	　 @cart_item = current_cart.cart_items.build(item: params[:item_id,:cart_id])
+      	   @cart_item = current_cart.cart_items.build(item: params[:item_id,:cart_id])
     	end
     	@cart_item.save
     	redirect_to current_cart
@@ -30,9 +30,9 @@ class User::CartsController < ApplicationController
   	def setup_cart_item!
    	 	@cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
   	end
- 	def cart_params
-  		params.require(:cart).permit(:quantity, :item_id, :user_id)
-  	end
+ 	#def cart_params
+  		#params.require(:cart).permit(:quantity, :item_id, :user_id)
+  	#end
 
 
 end
