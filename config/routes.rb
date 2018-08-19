@@ -45,7 +45,6 @@ Rails.application.routes.draw do
 		scope module: :user do
 			resources :users, only: [:show, :edit]
 		end
-		#resources :cancels
 		# get 'top' => 'users#top'
 
 		devise_scope :social_account do
