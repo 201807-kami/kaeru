@@ -1,0 +1,8 @@
+<p>ジャンルそれぞれ一覧</p>
+<% @genre.each do |genre| %>
+
+<%= @genre.name %>
+
+<% end %>
+
+<p><%= link_to "ジャンル一覧ページへ", user_genres_path %><p>
