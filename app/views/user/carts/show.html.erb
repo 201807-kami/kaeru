@@ -20,9 +20,9 @@
 							<td><%= @cart_items.price %></td>
 							<td><%= @cart_item.quantity %></td>
 							<td></td>
-							<td><%= link_to "削除", destroy_cart_path(@cart.id),class:"edit_#{@book.id}" %></td>
+							<td><%= link_to "削除", destroy_cart_path(@cart.id) %></td>
 						</tr>>
 					<% end %>
 			</tbody>
 
-			<%= f.submit '購入手続きへ進む'%>
+			<%= f.submit '購入手続きへ進む' %>
