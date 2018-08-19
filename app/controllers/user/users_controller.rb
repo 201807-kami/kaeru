@@ -1,4 +1,5 @@
 class User::UsersController < ApplicationController
+	
 	def top
 	end
 
@@ -14,4 +15,7 @@ class User::UsersController < ApplicationController
         @user.update(user_params)
         redirect_to user_path(@user.id)
     end
+
+
+
 end

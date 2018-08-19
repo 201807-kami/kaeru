@@ -1,0 +1,7 @@
+  <p>お気に入り一覧</p>
+
+  <% @favorite.each do |favorite| %>
+  <% item = Item.find(favorite.item_id) %>
+  <%= item.id %>
+  <% end %>
+

@@ -8,6 +8,8 @@ class User::ordersController < ApplicationController
     	flash[:notice] ='ご注文ありがとうございます'
     	redirect_to
     else
+    	redirect_to 
+  else
    	 	flash.now[:notice]='danger'
    		render
  	end
