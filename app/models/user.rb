@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+ order2
+        belongs_to :carts
+        has_many :items
+
   has_many :favorites
   has_many :items, through: :favorites
 
@@ -14,6 +18,9 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :zip, presence: true, format: {with: /\A\d{7}$\z/}
   validates :tel, presence: true, format: {with: /\A[0-9-]{,14}\z/}
+
+
+
 
 
 end
