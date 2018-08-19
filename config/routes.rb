@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 		resources :users, only: [:index, :show, :edit, :update]
 	end
 
-
     root to: 'user/users#top'
 
 	namespace :user, path: 'user' do
@@ -28,6 +27,7 @@ Rails.application.routes.draw do
 		resources :genres, only: [:index, :show]
 		resources :carts, only: [:show, :update, :delete]
         resources :order, only: [:show, :purchase_complete]
+ order2
         post '/purchase_complete' => 'order#purchase_complete'
         post '/add_item' => 'carts#add_item'
         #get '/add_item' => 'carts#show'
@@ -35,11 +35,26 @@ Rails.application.routes.draw do
   		delete '/delete' => 'carts#delete'
     end
 
+        resources :favorites, only: [:index, :destroy]
+        end
+        #お気に入り機能実装routing
+        resource :sessions, only: [:new, :create, :destroy]
+
+		resources :items do
+		    member do #item一覧画面からお気に入り登録をする
+		      post "add", to: "user/favorites#create"
+		    end
+		  end
+
+
+
+ master
+
 		resources :items, only: [:index]
-		scope module: :user do
-			resources :users, only: [:show, :edit]
-		end
 		# get 'top' => 'users#top'
+		scope module: :user do
+			resources :users, only: [:show]
+		end
 
 		devise_scope :social_account do
 			get 'sign_out', to: "sessions#destroy"

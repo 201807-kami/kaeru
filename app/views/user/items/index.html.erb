@@ -17,11 +17,10 @@
 				 <td><%= item.title %></td>
 			     <td><%= item.artist_id %></td>
 		   	     <td><%= link_to "詳細", user_item_path(item.id)%></td>
+		   	     <td><%= link_to "お気に入り登録", add_item_path(item), method: :post %></td>
+
 			  </tr>
 		</table>
      <% end %>
-
-
-
 
 
