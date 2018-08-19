@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 		resources :genres, only: [:index, :show]
 		resources :carts, only: [:show, :update, :delete]
         resources :order, only: [:show, :purchase_complete]
- order2
+ 
         post '/purchase_complete' => 'order#purchase_complete'
         post '/add_item' => 'carts#add_item'
         #get '/add_item' => 'carts#show'
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
 
 
 
- master
+
 
 		resources :items, only: [:index]
 		# get 'top' => 'users#top'
