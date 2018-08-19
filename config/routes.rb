@@ -28,18 +28,16 @@ Rails.application.routes.draw do
 		resources :genres, only: [:index, :show]
 		resources :carts, only: [:show, :update, :delete]
         resources :order, only: [:show, :purchase_complete]
-    end
+        resources :favorites, only: [:index, :destroy]
+        end
         #お気に入り機能実装routing
         resource :sessions, only: [:new, :create, :destroy]
 
 		resources :items do
-		    member do #本一覧画面からお気に入り登録をする
+		    member do #item一覧画面からお気に入り登録をする
 		      post "add", to: "user/favorites#create"
 		    end
 		  end
-		  #個人ページからお気に入りを削除する
-	    resources :favorites, only: [:show, :destroy]
-	    #お気に入り機能実装ーーーーーー
 
 
 
