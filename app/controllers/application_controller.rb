@@ -8,10 +8,6 @@ class ApplicationController < ActionController::Base
 		new_user_session_path
 	end
 
-<<<<<<< HEAD
-end
-
-=======
 	def create
 		@user = User.new(user_params)
 		if @user.save
@@ -21,4 +17,3 @@ end
 	end
 	end
 end
->>>>>>> change
