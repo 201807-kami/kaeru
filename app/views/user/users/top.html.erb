@@ -1,9 +1,16 @@
 <p>アプリケーショントップ画面</p>
 
-<p><%= link_to 'logout', destroy_user_session_path, method: :delete %><p>
+<header>
 
-<p><%= link_to '商品一覧ページへ', user_items_path %><p>
+<p><%= link_to 'logout', destroy_user_session_path, method: :delete %><p>
 
 <% if user_signed_in? %>
  <p><%= link_to 'ユーザー詳細', user_path(current_user.id) %></p>
+<% else %>
+ <p>まだ登録されていない方は
+ 	<br><%= link_to '新規登録', new_user_registration_path %></p>
 <% end %>
+
+</header>
+
+<p><%= link_to '商品一覧ページへ', user_items_path %><p>
