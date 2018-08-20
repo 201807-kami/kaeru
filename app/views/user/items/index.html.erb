@@ -20,30 +20,34 @@
 
 <p><% @items.each do |item| %></p>
 
-
-		<table border>
-  <tr>
-    <td>商品名</td>
-    <td width=center><%= item.title %></td>
-  </tr>
-  <tr>
-    <td>アーティスト</td>
-    <td align=center><%= item.artist_id %></td>
-  </tr>
-  <tr>
-    <td>ジャンル</td>
-    <td align=center><%= item.artist_id %></td>
-  </tr>
-  <tr>
-    <td>レーベル</td>
-    <td align=center><%= item.label_id %></td>
-  </tr>
-  <%= link_to "詳細", user_item_path(item.id)%>
-<%= link_to "お気に入り登録", add_item_path(item), method: :post %>
+<div>
 
 
-</table>
 
+		<table>
+		  <tr>
+		  	<td>写真</td>
+		  </tr>
+		  <tr>
+		    <td>商品名</td>
+		    <td width=center><%= item.title %></td>
+		  </tr>
+		  <tr>
+		    <td>アーティスト</td>
+		    <td align=center><%= item.artist_id %></td>
+		  </tr>
+		  <tr>
+		    <td>ジャンル</td>
+		    <td align=center><%= item.artist_id %></td>
+		  </tr>
+		  <tr>
+		    <td>レーベル</td>
+		    <td align=center><%= item.label_id %></td>
+		    <td><%= link_to "詳細", user_item_path(item.id)%></td>
+		    <td><%= link_to "お気に入り登録", add_item_path(item), method: :post %></td>
+		  </tr>
+		</table>
+</div>
 
 
 
