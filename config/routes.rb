@@ -38,6 +38,7 @@ Rails.application.routes.draw do
         #get '/add_item' => 'carts#show'
         post '/update' => 'carts#update'
   		delete '/delete' => 'carts#delete'
+  		get '/leave' => 'user#leave'
     end
 
         #お気に入り機能実装routing

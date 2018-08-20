@@ -16,6 +16,8 @@ class User::UsersController < ApplicationController
         redirect_to user_path(@user.id)
     end
 
+    def index
+    end
 
 
 end
