@@ -5,24 +5,22 @@ class User::CartItemsController < ApplicationController
 		@cart = current_cart
 		item = Item.find(params[:item_id])
 		@cart_item = @cart.add_item(item.id)
-
+		binding.pry
 	    respond_to do |format|
 	      if @cart_item.save
 	        format.html { redirect_to user_cart_path(@cart), notice: 'カートに商品が追加されました。' }
 	      else
-	        format.html { render :new }
+	        format.html { redirect_to user_item_path(item.id) }
 	      end
 	    end
 	end
 
 	def destroy
+    	@cart_item.destroy
 
-    	@cart = current_cart
-    	@cart.destroy
-    	session[:cart_id] = nil
     	respond_to do |format|
-     	 format.html { redirect_to user_items_path, notice: 'カートが空になりました。' }
-    	end
+      	format.html { redirect_to cart_url(@cart_item.cart_id), notice: '商品をカートから削除しました。' }
+      	end
   	end
 
     private
