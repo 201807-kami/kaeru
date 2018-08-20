@@ -1,22 +1,42 @@
-<p>アプリケーションtop</p>
-
-<div class="page-header">
-	<div class="col_lg_2">
-	 	<h1>kaeru</h1>
-	</div>
-	<div class="col_lg_10">
-	   <small>
-		<% if user_signed_in? %>
-          <%= link_to 'ユーザー詳細', user_path(current_user.id) %>
-        <% else %>
-         まだ登録されていない方は
- 	      <%= link_to '新規登録', new_user_registration_path %>
-        <% end %>
-          <%= link_to 'logout', destroy_user_session_path, method: :delete %>
-	   </small>
-	</div>
-</div>
-
+<header>
+  <div class="page-header">
+  	<h1>kaeru
+  		<small>
+			<% if user_signed_in? %>
+			  <%= link_to 'user', user_path(current_user.id), class: "glyphicon glyphicon-user" %>
+			<% else %>
+			  まだ登録されていない方は
+			  <%= link_to '新規登録', new_user_registration_path %>
+			<% end %>
+			  <%= link_to 'logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
+	    </small>
+	</h1>
+  </div>
+</header>
 
 
 <p><%= link_to '商品一覧ページへ', user_items_path %><p>
+
+
+
+
+
+
+
+<div class="footer">
+  <div class="container">
+  	<div clas="row">
+    <h4><p class="text-muted">kaeru</p></h4>
+    <div class="col-lg-4">
+    			<i class="fa fa-twitter-square fa-2x"></i>
+				<i class="fa fa-facebook-square fa-2x"></i>
+				<i class="fa fa-instagram fa-2x"></i>
+	</div>
+		<div class="col-lg-6">
+			<p>お問い合わせ</p> <p>メッセージ</p>
+	    </div>
+	    <div class="col-lg-2">
+			<p>@2018 kaeru</p>
+		</div>
+  </div>
+</div>
