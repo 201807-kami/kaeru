@@ -6,6 +6,8 @@
 
 <%= link_to "ジャンル一覧へ", user_genres_path %>
 
+<%= link_to "お気に入り一覧ページ", user_favorites_path %>
+
 <p><% @items.each do |item| %></p>
 
 		<table>
@@ -21,6 +23,7 @@
 
 			  </tr>
 		</table>
-     <% end %>
+   <% end %>
 
+<%= link_to 
 
