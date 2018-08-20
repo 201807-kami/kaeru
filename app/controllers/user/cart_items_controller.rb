@@ -3,10 +3,8 @@ class User::CartItemsController < ApplicationController
 	def create
 
 		@cart = current_cart
-
 		item = Item.find(params[:item_id])
-
-		@cart_item = @cart.cart_items.build(item: item)
+		@cart_item = @cart.add_item(item.id)
 
 	    respond_to do |format|
 	      if @cart_item.save
@@ -16,6 +14,16 @@ class User::CartItemsController < ApplicationController
 	      end
 	    end
 	end
+
+	def destroy
+
+    	@cart = current_cart
+    	@cart.destroy
+    	session[:cart_id] = nil
+    	respond_to do |format|
+     	 format.html { redirect_to user_items_path, notice: 'カートが空になりました。' }
+    	end
+  	end
 
     private
     # Use callbacks to share common setup or constraints between actions.

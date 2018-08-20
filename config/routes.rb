@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
 	namespace :user, path: 'user' do
 		resources :items, only: [:index, :show] do
-			resources :cart_items, only: [:create, :update, :delete]
+			resources :cart_items, only: [:create, :update, :destroy]
 		end
 
 		resources :artists, only: [:index, :show]
