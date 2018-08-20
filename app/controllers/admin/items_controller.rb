@@ -31,9 +31,9 @@ class Admin::ItemsController < ApplicationController
 	end
 
 	def update
-    @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to admin_items_path(session['search_params'])
+	    @item = Item.find(params[:id])
+	    @item.update(item_params)
+	    redirect_to admin_items_path(session['search_params'])
     end
 
 
