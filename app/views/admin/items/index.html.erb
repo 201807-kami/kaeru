@@ -33,29 +33,25 @@
 	            </span>
 	          </div>
 	        </div>
-<% 
-=begin
-%>
+
 	        <%= f.label :status, 'ステータス', class: 'col-2 col-form-label text-right pr-0' %>
 	        <div class="col-4">
 	          <div class="form-check form-check-inline pt-1">
-	            <label class="form-check-label{for: 'search_statuses_unpublished'}">
+	            <label class="form-check-label" for = 'search_statuses_unpublished'>
 	              <%= f.check_box :statuses, {multiple: true, class: 'form-check-input'}, 'unpublished', nil %>
-	              <span class="mr-2"><%= t('enums.item.status.unpublished') %></span>
+	              <span class="mr-2">受付中</span>
 	            </label>
-	            <label class="form-check-label{for: 'search_statuses_selling'}">
+	            <label class="form-check-label" for = 'search_statuses_selling'>
 	              <%= f.check_box :statuses, {multiple: true, class: 'form-check-input'}, 'selling', nil %>
-	              <span class="mr-2"><%= t('enums.item.status.selling') %></span>
+	              <span class="mr-2">販売中</span>
 	            </label>
-	            <label class="form-check-label{for: 'search_statuses_end_of_sell'}">
+	            <label class="form-check-label" for = 'search_statuses_end_of_sell'>
 	              <%= f.check_box :statuses, {multiple: true, class: 'form-check-input'}, 'end_of_sell', nil %>
-	              <span class="mr-2"><%= t('enums.item.status.end_of_sell') %></span>
+	              <span class="mr-2">販売終了</span>
 	            </label>
 	          </div>
 	        </div>
-<%
-=end
-%>
+
 	        <div class="col-2 text-right">
 	          <div class="btn-group">
 	            <%= f.submit '検索', class: 'btn btn-primary' %>
@@ -90,7 +86,7 @@
 	      <% @items.each do |item| %>
 	        <tr>
 	          <td class="text-right"><%= item.id %></td>
-	          <td><%= item.id %></td>
+	          <td><%= attachment_image_tag item, :item_image, :fill, 100, 100 %></td>
 	          <td><%= item.title %></td>
 	          <td><%= item.id %></td>
 	          <td class="text-right"><%= item.price %></td>
