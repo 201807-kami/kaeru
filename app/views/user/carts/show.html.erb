@@ -1,28 +1,29 @@
- <h2>cart 詳細ページ</h2>
-            <thead>
-		          <tr>
-						    <th>商品名</th>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<br>
+<h1>cart詳細ページ</h1>
+<h2>　　　カートに追加された商品</h2>
+<br>
+
+<br>
+<br>
+<table>
+	<tr>
+							<th>商品名</th>
 						    <th>アーティスト</th>
 						    <th>価格</th>
 						    <th>数量</th>
 						    <th>小計</th>
-						    <th></th>
+	</tr>
+		<% @cart.cart_items.each do |cart_item| %>
+		<tr>
+			<td text-align:center;><font size="4"><%= cart_item.item.title %></font></td>
+			<td text-align:center;><font size="4"><%#= cart_item.item.artist %></font></td>
+			<td text-align:center;><font size="4"><%= (cart_item.item.price).to_i %>円</font></td>
+			<td></td>
+			<td></td>
 
-				  </tr>
-			</thead>
-
-			<tbody>
-
-					<% @cart.cart_items.each do |cart| %>
-						<tr>
-							<td><%= @cart_items.title %></td>
-							<td><%= @cart_items.artist %></td>
-							<td><%= @cart_items.price %></td>
-							<td><%= @cart_item.quantity %></td>
-							<td></td>
-							<td><%= link_to "削除", destroy_cart_path(@cart.id) %></td>
-						</tr>>
-					<% end %>
-			</tbody>
-
-			<%= f.submit '購入手続きへ進む' %>
+		</tr>
+		<% end %>
+</table>
