@@ -1,32 +1,20 @@
-
-
-<%= form_for @item, url: admin_items_path do |f| %>
-    <div class ="field">
-      <%= f.label :商品名 %><br>
-      <%= f.text_field :title %><br>
-      <%= f.hidden_field :id %>
-
-      <%= f.label :アーティスト %><br>
-      <!-- 
-      <%= f.text_field :artist_id %><br>
-      <%= f.label :価格 %><br>
-      <%= f.text_field :price %><br>
-      <%= f.label :レーベル名 %><br>
-      <%= f.text_field :label_id %><br>
-      <%= f.label :ジャンル %><br>
-      <%= f.text_field :genre_id %><br>
-      <%= f.label :在庫数 %><br>
-      <%= f.text_field :stock %><br> -->
-      <%= f.fields_for :discs do |df| %>
-        <%= render partial: "disc_form", locals: {f: df } %>
-      <% end %>
-      <%= link_to_add_field("disc add", f, :discs, {}) %>
-    </div>
-    <div class="action row">
-    <%= f.submit 'Create item', :class =>"btn btn-primary col-xs-12" %>
-    </div>
-<% end %>
-
-
-
-
+<div class ="field">
+  <%= f.label :商品名 %><br>
+  <%= f.text_field :title %><br>
+  <%= f.label :ジャケット画像 %><br>
+  <%= f.attachment_field :item_image %>
+  <%= f.label :アーティスト %><br>
+  <%= f.text_field :artist_id %><br>
+  <%= f.label :価格 %><br>
+  <%= f.text_field :price %><br>
+  <%= f.label :レーベル名 %><br>
+  <%= f.text_field :label_id %><br>
+  <%= f.label :ジャンル %><br>
+  <%= f.select :genre_id, [["J-pop", 1],["K-pop", 2], ["洋楽", 3], ["ジャズ", 4]] %><br>
+  <%= f.label :在庫数 %><br>
+  <%= f.text_field :stock %><br>
+  <%= f.fields_for :discs do |df| %>
+    <%= render partial: "disc_form", locals: {f: df } %>
+    <% end %>
+  <%= link_to_add_field("disc add", f, :discs, {}) %>
+</div>

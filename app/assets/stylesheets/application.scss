@@ -12,12 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- .field {
-  border: 1px solid #000;
-  padding: 10px;
-  margin: 10px;
-  }
+ 
