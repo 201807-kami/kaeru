@@ -1,8 +1,9 @@
-<p>ジャンルそれぞれ一覧</p>
-<% @genre.each do |genre| %>
+<p>ジャンル別一覧ページ</p>
 
+<p><%= @genre.name %><p>
+<% @items.each do |item| %>
 
-<%= @genre.item_id.title %>
+<%= item.title %>
 
 <% end %>
 
