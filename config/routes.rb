@@ -30,7 +30,7 @@ Rails.application.routes.draw do
         resources :order, only: [:show, :purchase_complete]
 
         post '/purchase_complete' => 'order#purchase_complete'
-        post '/add_item' => 'carts#add_item'
+        post '/cart_create' => 'cart#create'
         #get '/add_item' => 'carts#show'
         post '/update' => 'carts#update'
   		delete '/delete' => 'carts#delete'

@@ -1,18 +1,35 @@
 class User::CartsController < ApplicationController
-	 before_action :setup_cart_item!, only: [:add_item, :update, :delete]
+	 before_action  only: [:create, :update, :delete]
 
- 	def add_item
-    	if @cart_item.blank?
-      	   @cart_item = current_cart.cart_items.build(item: params[:item_id,:cart_id])
-    	end
-    	@cart_item.save
-    	redirect_to current_cart
-    end
+	def create
+		@cart = current_cart
+		item = item.find(params[:item_id])
+		@cart_item = @cart.cart_items.build(item: item)
+
+    	respond_to do |format|
+    		#if 	@item.save
+    		#flash[:notice] ='success!'
+   			#redirect_to user_cart_path(@cart.id)
+ 	 		#else
+    		#flash.now[:notice]='danger'
+    		#render user_items_path
+      		if @cart_item.save
+       			format.html { redirect_to @cart_item.cart, notice: 'カートに商品が追加されました。' }
+        		#format.json { render :show, status: :created, location: @line_item }
+     	 	#else
+
+        		#format.html { render :new }
+        		#format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      		end
+  	end
 
 
   	def show
-    	@cart_items = current_cart.cart_items
-    	@cart_item.quantity += params[:quantity].to_i
+  		@carts = current_cart
+  		@item = item.find(params[:item_id])
+		@cart_item = @cart.cart_items.
+
+    	#@cart_item.quantity += params[:quantity].to_i
   	end
 
   	def update
@@ -27,12 +44,13 @@ class User::CartsController < ApplicationController
 
  private
 
-  	def setup_cart_item!
-   	 	@cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
-  	end
- 	#def cart_params
-  		#params.require(:cart).permit(:quantity, :item_id, :user_id)
+  	#def setup_cart_item!
+   	 	#@cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
   	#end
+ 	def cart_params
+  		params.require(:cart).permit(:cart_item_id, :user_id)
+  	end
+  end
 
 
 end
