@@ -9,7 +9,45 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+<body>
+
+<header>
+  <div class="page-header">
+    <h1>kaeru
+      <small>
+      <% if user_signed_in? %>
+        <%= link_to 'user', user_path(current_user.id), class: "glyphicon glyphicon-user" %>
+      <% else %>
+        <%= link_to '新規登録', new_user_registration_path, class: "glyphicon glyphicon-user" %>
+        &nbsp;&nbsp;<%= link_to 'login', user_session_path, class: "glyphicon glyphicon-log-in" %>
+      <% end %>
+        &nbsp;&nbsp;<%= link_to 'logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
+      </small>
+  </h1>
+  </div>
+</header>
+
     <%= yield %>
+
+<div class="footer">
+  <div class="container">
+    <div clas="row">
+    <h4><p class="text-muted">kaeru</p></h4>
+    <div class="col-lg-4">
+          <i class="fa fa-twitter-square fa-2x"></i>
+        <i class="fa fa-facebook-square fa-2x"></i>
+        <i class="fa fa-instagram fa-2x"></i>
+  </div>
+    <div class="col-lg-6">
+      <p>お問い合わせ</p> <p>メッセージ</p>
+      </div>
+      <div class="col-lg-2">
+      <p>@2018 kaeru</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
   </body>
 </html>
