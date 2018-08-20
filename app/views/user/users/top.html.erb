@@ -1,9 +1,29 @@
-<p>アプリケーショントップ画面</p>
-
-<p><%= link_to 'logout', destroy_user_session_path, method: :delete %><p>
 
 <p><%= link_to '商品一覧ページへ', user_items_path %><p>
 
-<% if user_signed_in? %>
- <p><%= link_to 'ユーザー詳細', user_path(current_user.id) %></p>
-<% end %>
+
+<h4>ネットストアの便利なサービス内容</h4>
+  <div class="col-lg-2">
+    <p>
+      <i class="fa fa-truck fa-5x"></i>
+       <br clear="left">
+       配送料無料
+    </p>
+  </div>
+  <div class="col-lg-2">
+    <p>
+      &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-archive fa-5x"></i>
+       <br clear="left">
+       選べる受取方法
+    </p>
+   </div>
+   <div class="col-lg-8">
+   	<p>
+     &nbsp;&nbsp;<i class="fa fa-shopping-bag fa-5x"></i>
+      <br class="clear">
+      まとめ買いOK
+    </p>
+   </div>
+
+
+

@@ -23,19 +23,26 @@ Rails.application.routes.draw do
     root to: 'user/users#top'
 
 	namespace :user, path: 'user' do
-		resources :items, only: [:index, :show]
+		resources :items, only: [:index, :show] do
+			resources :cart_items, only: [:create, :update, :destroy]
+		end
+
 		resources :artists, only: [:index, :show]
 		resources :genres, only: [:index, :show]
 		resources :favorites, only: [:index, :destroy]
-		resources :carts, only: [:show, :update, :delete]
-        resources :order, only: [:show, :purchase_complete]
+		resources :carts, only: [:show, :update, :destroy]
+        resources :order, only: [:show, :purchase_complete, :new]
+
 
         post '/purchase_complete' => 'order#purchase_complete'
-        post '/cart_create' => 'cart#create'
+        # post '/create' => 'cart_items#create'
+
         #get '/add_item' => 'carts#show'
         post '/update' => 'carts#update'
   		delete '/delete' => 'carts#delete'
+
     end
+  		get '/user/leave' => 'user/leaves#index', as: 'user_leave'
 
         #お気に入り機能実装routing
         resource :sessions, only: [:new, :create, :destroy]

@@ -1,15 +1,15 @@
-<h2>Log in</h2>
+<h2>ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :メールドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :パスワード %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
@@ -21,13 +21,11 @@
   <% end -%>
 
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <br><div class="actions">
+    <%= f.submit "ログイン" %>
   </div>
 
-   登録がお済みでない方は<%= link_to 'こちら', new_user_registration_path %>
+   <br>登録がお済みでない方は<%= link_to 'こちら', new_user_registration_path %>
 <% end %>
 
 
-
-<%= render "user/users/shared/links" %>
