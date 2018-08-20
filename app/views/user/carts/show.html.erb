@@ -21,9 +21,12 @@
 			<td text-align:center;><font size="4"><%= cart_item.item.title %></font></td>
 			<td text-align:center;><font size="4"><%#= cart_item.item.artist %></font></td>
 			<td text-align:center;><font size="4"><%= (cart_item.item.price).to_i %>円</font></td>
-			<td></td>
+			<td text-align:center;><font size="4"><%= cart_item.quantity %></font></td>
 			<td></td>
 
 		</tr>
 		<% end %>
 </table>
+
+<br>
+<%= button_to 'カートを空にする', user_item_cart_items_path(@cart), method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: 'fbtn' %>
