@@ -38,8 +38,9 @@ Rails.application.routes.draw do
         #get '/add_item' => 'carts#show'
         post '/update' => 'carts#update'
   		delete '/delete' => 'carts#delete'
-  		get '/leave' => 'user#leave'
+
     end
+  		get '/user/leave' => 'user/leaves#index', as: 'user_leave'
 
         #お気に入り機能実装routing
         resource :sessions, only: [:new, :create, :destroy]
