@@ -9,6 +9,9 @@ class User::CartsController < ApplicationController
 		#@cart_item = @cart.cart_items.
 
     	#@cart_item.quantity += params[:quantity].to_i
+    	@cart.cart_items.each do |cart_item|
+    		@price += cart_item.item.price*cart_item.quantity
+    	end
   	end
 
   	def update
@@ -16,9 +19,13 @@ class User::CartsController < ApplicationController
     	redirect_to current_cart
   	end
 
-  	def delete
-    	@cart_item.destroy
-    	redirect_to current_cart
+  	def destroy
+    	@cart = current_cart
+   	 	@cart.destroy
+    	session[:cart_id] = nil
+    	respond_to do |format|
+      		format.html { redirect_to user_items_path, notice: 'カートが空になりました。' }
+    	end
   	end
 
  private
