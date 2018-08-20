@@ -1,33 +1,12 @@
 class User::CartsController < ApplicationController
-	 before_action  only: [:create, :update, :delete]
-
-	def create
-		@cart = current_cart
-		item = item.find(params[:item_id])
-		@cart_item = @cart.cart_items.build(item: item)
-
-    	respond_to do |format|
-    		#if 	@item.save
-    		#flash[:notice] ='success!'
-   			#redirect_to user_cart_path(@cart.id)
- 	 		#else
-    		#flash.now[:notice]='danger'
-    		#render user_items_path
-      		if @cart_item.save
-       			format.html { redirect_to @cart_item.cart, notice: 'カートに商品が追加されました。' }
-        		#format.json { render :show, status: :created, location: @line_item }
-     	 	#else
-
-        		#format.html { render :new }
-        		#format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      		end
-  	end
+	 before_action  only: [:update, :delete]
 
 
   	def show
-  		@carts = current_cart
-  		@item = item.find(params[:item_id])
-		@cart_item = @cart.cart_items.
+      @cart = Cart.find(params[:id])
+  		# @carts = current_cart
+  		#@item = item.find(params[:item_id])
+		#@cart_item = @cart.cart_items.
 
     	#@cart_item.quantity += params[:quantity].to_i
   	end
@@ -50,7 +29,6 @@ class User::CartsController < ApplicationController
  	def cart_params
   		params.require(:cart).permit(:cart_item_id, :user_id)
   	end
-  end
-
-
 end
+
+

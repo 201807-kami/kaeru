@@ -22,7 +22,10 @@ Rails.application.routes.draw do
     root to: 'user/users#top'
 
 	namespace :user, path: 'user' do
-		resources :items, only: [:index, :show]
+		resources :items, only: [:index, :show] do
+			resources :cart_items, only: [:create, :update, :delete]
+		end
+
 		resources :artists, only: [:index, :show]
 		resources :genres, only: [:index, :show]
 		resources :favorites, only: [:index, :destroy]
@@ -30,7 +33,8 @@ Rails.application.routes.draw do
         resources :order, only: [:show, :purchase_complete]
 
         post '/purchase_complete' => 'order#purchase_complete'
-        post '/cart_create' => 'cart#create'
+        # post '/create' => 'cart_items#create'
+
         #get '/add_item' => 'carts#show'
         post '/update' => 'carts#update'
   		delete '/delete' => 'carts#delete'
