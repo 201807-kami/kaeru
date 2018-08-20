@@ -18,9 +18,9 @@ class Item < ApplicationRecord
 			retuen false
 		end
 	end
-end
 
 	has_many :favorites
 	has_many :users, through: :favorites
 	belongs_to :genres, optional:true
+
 end
