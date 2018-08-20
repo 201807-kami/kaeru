@@ -1,14 +1,14 @@
 <div class="container">
 
-<% if @item.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger">
-    <ul>
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+	<% if @item.errors.any? %>
+	  <div id="error_explanation" class="alert alert-danger">
+	    <ul>
+	      <% @item.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+	<% end %>
 
 
 	<%= form_for @item, url: admin_items_path do |f| %>

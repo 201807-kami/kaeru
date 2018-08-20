@@ -37,10 +37,13 @@
 	        <%= f.label :status, 'ステータス', class: 'col-2 col-form-label text-right pr-0' %>
 	        <div class="col-4">
 	          <div class="form-check form-check-inline pt-1">
-	            <label class="form-check-label" for = 'search_statuses_unpublished'>
-	              <%= f.check_box :statuses, {multiple: true, class: 'form-check-input'}, 'unpublished', nil %>
-	              <span class="mr-2">受付中</span>
+	            <label class="form-check-label" for = 'search_status_unpublished'>
+	              <%= f.check_box :statuses, {multiple: true, class: 'form-check-input'}, '未公開', nil %>
+	              <span class="mr-2">未公開</span>
 	            </label>
+<%
+=begin
+%>
 	            <label class="form-check-label" for = 'search_statuses_selling'>
 	              <%= f.check_box :statuses, {multiple: true, class: 'form-check-input'}, 'selling', nil %>
 	              <span class="mr-2">販売中</span>
@@ -49,6 +52,9 @@
 	              <%= f.check_box :statuses, {multiple: true, class: 'form-check-input'}, 'end_of_sell', nil %>
 	              <span class="mr-2">販売終了</span>
 	            </label>
+<%
+=end
+%>
 	          </div>
 	        </div>
 

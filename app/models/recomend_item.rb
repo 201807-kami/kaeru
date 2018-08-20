@@ -1,2 +1,0 @@
-class RecomendItem < ApplicationRecord
-end

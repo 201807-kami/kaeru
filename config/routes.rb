@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 		resources :items
 		resources :artists
 		resources :users, only: [:index, :show, :edit, :update]
+		resources :recommended_items
 	end
 
     root to: 'user/users#top'
