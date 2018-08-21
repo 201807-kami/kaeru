@@ -22,6 +22,7 @@
         &nbsp;&nbsp;<%= link_to 'login', user_session_path, class: "glyphicon glyphicon-log-in" %>
       <% end %>
         &nbsp;&nbsp;<%= link_to 'logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
+        &nbsp;&nbsp;<%= link_to "お気に入り", user_favorites_path, class: "glyphicon glyphicon-heart" %>
       </small>
   </h1>
   </div>
