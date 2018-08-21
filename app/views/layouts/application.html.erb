@@ -11,24 +11,53 @@
 
 <body>
 
-<header>
-  <div class="page-header">
-    <h1>kaeru
-      <small>
-      <% if user_signed_in? %>
-        <%= link_to 'user', user_path(current_user.id), class: "glyphicon glyphicon-user" %>
-      <% else %>
-        <%= link_to '新規登録', new_user_registration_path, class: "glyphicon glyphicon-user" %>
-        &nbsp;&nbsp;<%= link_to 'login', user_session_path, class: "glyphicon glyphicon-log-in" %>
-      <% end %>
-        &nbsp;&nbsp;<%= link_to 'logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
-        &nbsp;&nbsp;<%= link_to "お気に入り", user_favorites_path, class: "glyphicon glyphicon-heart" %>
-      </small>
-  </h1>
-  </div>
-</header>
 
-    <%= yield %>
+<div class="container">
+
+<!-- header -->
+
+    <header>
+      <div class="row">
+      <div class="page-header">
+        <h1>kaeru
+          <small>
+          <% if user_signed_in? %>
+            <%= link_to 'user', user_path(current_user.id), class: "glyphicon glyphicon-user" %>
+          <% else %>
+            <%= link_to '新規登録', new_user_registration_path, class: "glyphicon glyphicon-user" %>
+            &nbsp;&nbsp;<%= link_to 'login', user_session_path, class: "glyphicon glyphicon-log-in" %>
+          <% end %>
+            &nbsp;&nbsp;<%= link_to 'logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
+            &nbsp;&nbsp;<%= link_to "お気に入り", user_favorites_path, class: "glyphicon glyphicon-heart" %>
+          </small>
+      </h1>
+      </div>
+      </div>
+    </header>
+    <div class="row">
+        <!-- left -->
+        <div class="col-md-2">
+            <!-- パネルで囲む -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Menu
+                </div>
+                <!-- 敢えてbodyを作らないことで、メニューを詰める -->
+                <!-- <div class="panel-body"> -->
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href=""><i class="glyphicon glyphicon-pencil"></i> submenu1</a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-download"></i> submenu2</a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-leaf"></i> submenu3</a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-folder-open"></i> submenu4</a></li>
+                </ul> 
+                <!-- </div> -->
+            </div>
+        </div>
+         <%= yield %>
+        <!-- center -->
+        <!-- right -->
+    </div>
+<!-- footer -->
 
 <div class="footer">
   <div class="container">
@@ -47,6 +76,8 @@
     </div>
   </div>
 </div>
+</div>
+
 </div>
 
 
