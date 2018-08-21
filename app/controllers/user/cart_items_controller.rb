@@ -2,27 +2,31 @@ class User::CartItemsController < ApplicationController
 
 	def create
 
-		@cart = current_cart
+		@cart = Cart.find_by(user_id: current_user.id)
 		item = Item.find(params[:item_id])
-		@cart_item = @cart.add_item(item.id)
+		#@cart_item = @cart.add_item(item.id)
+		@cart_item = CartItem.new(cart_id: @cart.id,item_id: item.id, quantity: 1)
 
-	    respond_to do |format|
-	      if @cart_item.save
-	        format.html { redirect_to user_cart_path(@cart), notice: 'カートに商品が追加されました。' }
+		@cart_items = @cart.cart_items
+
+		if @cart_items.include?(@cart_item)
+			 current_item.idncrement(:quantity, 1)
+		else
+			current_item = cart_items.build(item_id: item_id)
+		  if @cart_item.save
+	         redirect_to user_cart_path(@cart), notice: 'カートに商品が追加されました。'
 	      else
-	        format.html { render :new }
+	         redirect_to user_item_path(item.id)
 	      end
-	    end
+		end
+		#binding.pry
+
 	end
 
 	def destroy
+    	@cart_item.destroy
 
-    	@cart = current_cart
-    	@cart.destroy
-    	session[:cart_id] = nil
-    	respond_to do |format|
-     	 format.html { redirect_to user_items_path, notice: 'カートが空になりました。' }
-    	end
+      	redirect_to cart_url(@cart_item.cart_id), notice: '商品をカートから削除しました。'
   	end
 
     private
@@ -32,7 +36,21 @@ class User::CartItemsController < ApplicationController
    		end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    	def cart_item_params
-      		params.require(:cart_item).permit(:item_id, :cart_id)
-    	end
+    	#def cart_item_params
+      		#params.require(:cart_item).permit(:item_id, :cart_id)
+    	#end
+
+    	#def add_item(item_id)
+
+			#current_item = cart_items.find_by_item_id(item_id)
+
+			#if current_item
+				#current_item.idncrement(:quantity, 1)
+
+			#else
+				#current_item = cart_items.build(item_id: item_id)
+			#end
+			#current_item
+
+		#end
 end

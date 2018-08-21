@@ -15,8 +15,14 @@ Rails.application.routes.draw do
 		root 'home#index', as: :root
 		resources :admins, only: [:index, :new, :create, :edit, :update, :delete]
 		resources :items
-		resources :artists
+		resources :artists do
+			get :autocomplete_artist_name, on: :collection
+		end
+		resources :labels do
+			get :autocomplete_label_name, on: :collection
+		end
 		resources :users, only: [:index, :show, :edit, :update]
+		resources :recommended_items
 	end
 
     root to: 'user/users#top'
@@ -29,8 +35,9 @@ Rails.application.routes.draw do
 		resources :artists, only: [:index, :show]
 		resources :genres, only: [:index, :show]
 		resources :favorites, only: [:index, :destroy]
-		resources :carts, only: [:show, :update, :delete]
-        resources :order, only: [:show, :purchase_complete]
+		resources :carts, only: [:show, :update, :destroy]
+        resources :order, only: [:show, :purchase_complete, :new]
+
 
         post '/purchase_complete' => 'order#purchase_complete'
         # post '/create' => 'cart_items#create'
