@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2018_08_20_072037) do
-
+ActiveRecord::Schema.define(version: 2018_08_21_070037) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -102,6 +100,8 @@ ActiveRecord::Schema.define(version: 2018_08_20_072037) do
     t.string "status"
     t.text "item_image_id"
     t.integer "recommended"
+    t.string "artist_name"
+    t.string "label_name"
   end
 
   create_table "labels", force: :cascade do |t|

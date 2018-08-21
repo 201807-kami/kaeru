@@ -10,6 +10,7 @@ class Item < ApplicationRecord
 
 	has_many :favorites
 	has_many :users, through: :favorites
-	belongs_to :genres, optional:true
+	belongs_to :genre, optional:true
+	belongs_to :artist
 
 end
