@@ -4,7 +4,7 @@ class User::CartsController < ApplicationController
 
   	def show
       @cart = Cart.find(params[:id])
-  		# @carts = current_cart
+  		#@carts = current_cart
   		#@item = item.find(params[:item_id])
 		#@cart_item = @cart.cart_items.
 
