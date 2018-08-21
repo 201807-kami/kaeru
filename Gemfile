@@ -42,6 +42,8 @@ gem 'kaminari'
 gem 'refile', require: "refile/rails", github: 'manfe/refile'
 gem 'refile-mini_magick'
 gem 'font-awesome-rails'
+gem 'rails4-autocomplete'
+gem 'jquery-ui-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

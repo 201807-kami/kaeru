@@ -15,8 +15,14 @@ Rails.application.routes.draw do
 		root 'home#index', as: :root
 		resources :admins, only: [:index, :new, :create, :edit, :update, :delete]
 		resources :items
-		resources :artists
+		resources :artists do
+			get :autocomplete_artist_name, on: :collection
+		end
+		resources :labels do
+			get :autocomplete_label_name, on: :collection
+		end
 		resources :users, only: [:index, :show, :edit, :update]
+		resources :recommended_items
 	end
 
     root to: 'user/users#top'
@@ -39,7 +45,9 @@ Rails.application.routes.draw do
         #get '/add_item' => 'carts#show'
         post '/update' => 'carts#update'
   		delete '/delete' => 'carts#delete'
+
     end
+  		get '/user/leave' => 'user/leaves#index', as: 'user_leave'
 
         #お気に入り機能実装routing
         resource :sessions, only: [:new, :create, :destroy]
