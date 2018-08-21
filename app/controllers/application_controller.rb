@@ -13,7 +13,14 @@ class ApplicationController < ActionController::Base
      # For APIs, you may want to use :null_session instead.
   		protect_from_forgery with: :exception
 
-	private
+
+  protected
+
+  def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :tel, :first_name_furigana, :last_name_furigana, :zip, :address, :email])
+  end
+
+  	private
 		def current_cart
 
 		Cart.find(session[:cart_id])
@@ -22,12 +29,7 @@ class ApplicationController < ActionController::Base
 			cart = Cart.create
 			session[:cart_id] = cart.id
 			cart
-    end
+   		 end
 
-  protected
-
-  def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :tel, :first_name_furigana, :last_name_furigana, :zip, :address, :email])
-  end
 
 end

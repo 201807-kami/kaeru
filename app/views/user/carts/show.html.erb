@@ -20,6 +20,7 @@
 		<% @cart.cart_items.each do |cart_item| %>
 		<tr>
 			<td text-align:center;><font size="4"><%= cart_item.item.title %></font></td>
+			<td></td>
 			<td text-align:center;><font size="4"><%= (cart_item.item.price).to_i %>円</font></td>
 			<td text-align:center;><font size="4"><%= cart_item.quantity %></font></td>
 			<td text-align:center;><font size="4"><%= (cart_item.total_price).to_i %>円</font></td>
