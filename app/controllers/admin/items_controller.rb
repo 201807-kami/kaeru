@@ -17,13 +17,12 @@ class Admin::ItemsController < ApplicationController
 
 	def create
 		@item = Item.new(item_params)
-		if @item.save
-			redirect_to admin_items_path
-		else
-			@item.discs.build
-			@item.discs.first.songs.build
-			render :new
-		end
+		@artist = Artist.find_by(name: item_params[:artist_name])
+		@item.artist_id = @artist.id
+		@label = Label.find_by(name: item_params[:label_name])
+		@item.label_id = @label.id
+	  @item.save
+		redirect_to admin_items_path
 	end
 
 	def edit 
@@ -32,6 +31,8 @@ class Admin::ItemsController < ApplicationController
 
 	def update
     @item = Item.find(params[:id])
+    @artist = Artist.find_by(name: item_params[:artist_name])
+		@item.artist_id = @artist.id
     @item.update(item_params)
     redirect_to admin_items_path(session['search_params'])
   end
@@ -53,7 +54,7 @@ class Admin::ItemsController < ApplicationController
 
 	def item_params
 		params.require(:item).permit(
-			:id, :title, :item_image,:image, :artist_id, :label_id, :genre_id, :price, :stock, :status, :recommended,
+			:id, :title, :artist_name, :label_name, :item_image,:image, :label_id, :genre_id, :price, :stock, :status, :recommended,
 			discs_attributes: [:id, :disc_number, :_destroy,
 				songs_attributes: [:id, :name, :_destroy]])
 	end

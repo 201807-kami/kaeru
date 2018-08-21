@@ -4,11 +4,11 @@
   <%= f.label :ジャケット画像 %><br>
   <%= f.attachment_field :item_image %>
   <%= f.label :アーティスト %><br>
-  <%= f.text_field :artist_id %><br>
+  <%= f.autocomplete_field :artist_name, autocomplete_artist_name_admin_artists_path %><br>
   <%= f.label :価格 %><br>
   <%= f.text_field :price %><br>
   <%= f.label :レーベル名 %><br>
-  <%= f.text_field :label_id %><br>
+  <%= f.autocomplete_field :label_name, autocomplete_label_name_admin_labels_path %><br>
   <%= f.label :ジャンル %><br>
   <%= f.select :genre_id, [["J-pop", 1],["洋楽", 2], ["K-pop", 3], ["ジャズ", 4]] %><br>
   <%= f.label :在庫数 %><br>

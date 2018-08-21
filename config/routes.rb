@@ -15,7 +15,12 @@ Rails.application.routes.draw do
 		root 'home#index', as: :root
 		resources :admins, only: [:index, :new, :create, :edit, :update, :delete]
 		resources :items
-		resources :artists
+		resources :artists do
+			get :autocomplete_artist_name, on: :collection
+		end
+		resources :labels do
+			get :autocomplete_label_name, on: :collection
+		end
 		resources :users, only: [:index, :show, :edit, :update]
 		resources :recommended_items
 	end
