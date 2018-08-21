@@ -8,21 +8,17 @@ class User::ordersController < ApplicationController
 
     @order = Order.new
 
-    respond_to do |format|
-      format.html
-    end
 	end
 
  def create
     @order = Order.new(order_params)
     @order.add_items(current_cart)
 
-    respond_to do |format|
+
       if @order.save
-  Cart.destroy(session[:cart_id])
-  session[:cart_id] = nil
-        format.html { redirect_to user_order(order.id) , notice: 'ご注文ありがとうございました。' }
-        format.html { render :new }
+        Cart.destroy(session[:cart_id])
+        session[:cart_id] = nil
+        redirect_to user_order(order.id) , notice: 'ご注文ありがとうございました。'
       end
     end
   end

@@ -2,25 +2,22 @@ class User::CartItemsController < ApplicationController
 
 	def create
 
-		@cart = current_cart
+		@cart = Cart.find_by(user_id: current_user.id)
 		item = Item.find(params[:item_id])
 		@cart_item = @cart.add_item(item.id)
-		binding.pry
-	    respond_to do |format|
+		#binding.pry
+
 	      if @cart_item.save
-	        format.html { redirect_to user_cart_path(@cart), notice: 'カートに商品が追加されました。' }
+	         redirect_to user_cart_path(@cart), notice: 'カートに商品が追加されました。'
 	      else
-	        format.html { redirect_to user_item_path(item.id) }
+	          redirect_to user_item_path(item.id)
 	      end
-	    end
 	end
 
 	def destroy
     	@cart_item.destroy
 
-    	respond_to do |format|
-      	format.html { redirect_to cart_url(@cart_item.cart_id), notice: '商品をカートから削除しました。' }
-      	end
+      	redirect_to cart_url(@cart_item.cart_id), notice: '商品をカートから削除しました。'
   	end
 
     private

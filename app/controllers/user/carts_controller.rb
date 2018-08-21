@@ -15,8 +15,8 @@ class User::CartsController < ApplicationController
   	end
 
   	def update
-   	 	@cart_item.update(quantity: params[:quantity].to_i)
-    	redirect_to current_cart
+   	 	#@cart_item.update(quantity: params[:quantity].to_i)
+    	#redirect_to current_cart
   	end
 
   	def destroy
