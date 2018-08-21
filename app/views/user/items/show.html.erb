@@ -1,21 +1,19 @@
-<p>商品詳細ページ</p>
+<div class="container">
 
+<p>商品詳細</p>
 
-<table>
-  <tr>
-    <td>商品名</td>
-    <td>値段</td>
-    <td>アーティスト</td>
-    <td>ジャンル</td>
-    <td>発売日</td>
-  </tr>
-  <tr>
-    <td><%= @item.title %></td>
-    <td><%= @item.price %></td>
-    <td><%= @item.artist_id %></td>
-    <td><%= @item.genre_id %></td>
-    <td><%= @item.release_date %></td>
-  </tr>
-</table>
 <%= link_to "item一覧へ", user_items_path %>
 <%= link_to 'カートに入れる',   user_item_cart_items_path(@item),method: :post %>
+
+
+　  <%= attachment_image_tag @item, :item_image, :fill, 300, 300, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg", size:"300x300" %>
+    <p>商品名<%= @item.title %></p>
+    <p>値段¥<%= @item.price %></p>
+    <p>アーティスト名<%= @item.artist_id %></p>
+    <p>ジャンル名<%= @item.genre_id %></p>
+    <p>発売日<%= @item.release_date %></p>
+    <p>品番</p>
+    <P>ジャンル</P>
+    <p>レーベル</p>
+
+</div>

@@ -1,26 +1,27 @@
-<p>artists一覧ページ</p>
-<%= link_to "item一覧へ", user_items_path %>
+
+<div class="container">
+
 
 <%= link_to "ジャンル一覧へ", user_genres_path %>
 
-
-
-<% @artist.each do |artist| %>
-
-<table>
-	<thead>
-		<tr>
-			<th>アーティスト名</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><%= artist.name %></td>
-			<td><%= link_to "詳細", user_artist_path(artist.id) %> </td>
-		</tr>
-	</tbody>
+<table class="table table-bordered">
+	<td>アーティスト一覧</td>
+	<td><%= link_to "商品一覧", user_items_path %></td>
 </table>
 
+<% @artist.each do |artist| %>
+	  <table class="table table-bordered table-sm table-hover">
 
+	    <tbody>
+	        <tr>
+	          <td>ここに写真がきます</td>
+	          <td><%= artist.name %></td>
+	          <td><%= link_to "詳細", user_artist_path(artist.id) %></td>
+	           <span class="my-2"></span>
+	        </tr>
+	    </tbody>
+	  </table>
 
 <% end %>
+
+</div>
