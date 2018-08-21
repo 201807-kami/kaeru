@@ -27,4 +27,11 @@ class User::ordersController < ApplicationController
 private
   	def order_params
   		params.require(:order).permit(:adress, :payment_method)
- 	end
+ 	  end
+
+    def add_items(cart)
+      cart.cart_items.each do |item|
+      item.cart_id = nil
+      cart_items << item
+      end
+  end
