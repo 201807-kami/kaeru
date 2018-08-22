@@ -1,7 +1,7 @@
 class Admin::ItemSearchForm
   include ActiveModel::Model
 
-  attr_accessor :genre_id, :title, :stock, :sort_type, :stock_type, :statuses
+  attr_accessor :genre_id, :title, :stock, :sort_type, :stock_type, :status
 
   def search(page)
     items = Item.all
@@ -11,9 +11,10 @@ class Admin::ItemSearchForm
       symbol = stock_type == 'less' ? '<=' : '>='
       items = items.where("`items`.`stock` #{symbol} ?", stock)
     end
-    items = items.where(status: statuses) if statuses.present?
+    items = items.where(status: status) if status.present?
+    items = items.where(genre_id: genre_id) if genre_id.present?
 
-    #items = items.page(page).per(50)
+    items = items.page(page).per(30)
     case sort_type
       when 'asc'
         items = items.order(:id)
@@ -21,10 +22,8 @@ class Admin::ItemSearchForm
         items = items.order(stock: :desc, id: :desc)
       when 'stock_asc'
         items = items.order(stock: :asc, id: :desc)
-      else
+      else 
         items = items.order(id: :desc)
     end
-    items
   end
-
 end

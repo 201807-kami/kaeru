@@ -10,7 +10,7 @@
   <%= f.label :レーベル名 %><br>
   <%= f.autocomplete_field :label_name, autocomplete_label_name_admin_labels_path %><br>
   <%= f.label :ジャンル %><br>
-  <%= f.select :genre_id, [["J-pop", 1],["洋楽", 2], ["K-pop", 3], ["ジャズ", 4]] %><br>
+  <%= f.collection_select(:genre_id, Genre.all, :id, :name) %><br>
   <%= f.label :在庫数 %><br>
   <%= f.text_field :stock %><br>
   <%= f.label :ステータス %><br>
