@@ -13,11 +13,11 @@
 	      <div class="form-group row">
 	        <%= f.label :title, '商品名', class: 'col-1 col-form-label pr-0' %>
 	        <div class="col-5">
-	          <%= f.text_field :title, class: 'form-control', placeholder: 'あいまい検索' %>
+	          <%= f.text_field :title, class: 'form-control' %>
 	        </div>
 	        <%= f.label :genre_id, 'ジャンル', class: 'col-2 col-form-label pr-0 text-right' %>
 	        <div class="col-4">
-	          <%= f.select :genre_id, [["J-pop", 1],["K-pop", 2], ["洋楽", 3], ["ジャズ", 4]] %>
+	          <%= f.collection_select(:genre_id, Genre.all, :id, :name, include_blank: true) %>
 	        </div>
 	      </div>
 	      <div class="form-group row">
@@ -38,22 +38,22 @@
 	        <div class="col-4">
 	          <div class="form-check form-check-inline pt-1">
 	            <label class="form-check-label" for = 'search_status_unpublished'>
-	              <%= f.check_box :statuses, {multiple: true, class: 'form-check-input'}, '未公開', nil %>
+	              <%= f.check_box :status, {multiple: true, class: 'form-check-input'}, '未公開', nil %>
 	              <span class="mr-2">未公開</span>
 	            </label>
 
 	            <label class="form-check-label" for = 'search_statuses_selling'>
-	              <%= f.check_box :statuses, {multiple: true, class: 'form-check-input'}, 'selling', nil %>
+	              <%= f.check_box :status, {multiple: true, class: 'form-check-input'}, '販売中', nil %>
 	              <span class="mr-2">販売中</span>
 	            </label>
 	            <label class="form-check-label" for = 'search_statuses_end_of_sell'>
-	              <%= f.check_box :statuses, {multiple: true, class: 'form-check-input'}, 'end_of_sell', nil %>
+	              <%= f.check_box :status, {multiple: true, class: 'form-check-input'}, '販売終了', nil %>
 	              <span class="mr-2">販売終了</span>
 	            </label>
 	          </div>
 	        </div>
 
-	        <div class="col-2 text-right">
+	        <div class="col-3 text-right">
 	          <div class="btn-group">
 	            <%= f.submit '検索', class: 'btn btn-primary' %>
 	            <button aria-expanded = 'true' aria-haspopup = 'true' class="btn btn-primary dropdown-toggle" data-toggle='dropdown'   >
@@ -63,10 +63,10 @@
 	            <div class="dropdown-menu">
 	              <a class="dropdown-item" href = '#', onclick = 'search_with_sort("desc")'>登録日が新しい順</a><br>
 	              <a class="dropdown-item" href = '#', onclick = 'search_with_sort("asc")'> 登録日が古い順</a><br>
-	              <a class="dropdown-item" href = '#', onclick = 'search_with_sort("stock_ask")'>在庫が少ない順</a><br>
+	              <a class="dropdown-item" href = '#', onclick = 'search_with_sort("stock_asc")'>在庫が少ない順</a><br>
 	              <a class="dropdown-item" href = '#', onclick = 'search_with_sort("stock_desc")'>在庫が多い順</a><br>
 	            </div>
-	          <%= f.hidden_field :sort_type %>
+	           <%= f.hidden_field :sort_type %>
 	          </div>
 	        </div>
 	      </div>
@@ -103,3 +103,14 @@
 	  </table>
 	</div>
 </div>
+
+<%= paginate @items %>
+
+
+
+<script>
+	  function search_with_sort(sort_type) {
+      $('#search_sort_type').val(sort_type);
+      $('#form_item_search').submit();
+    }
+</script> 
