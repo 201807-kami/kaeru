@@ -32,13 +32,13 @@ Rails.application.routes.draw do
 		resources :items, only: [:index, :show] do
 			resources :cart_items, only: [:create, :update, :destroy]
 		end
+		get '/user/carts/create/:id' => 'carts#create', as: 'cart_item_create'
 
 		resources :artists, only: [:index, :show]
 		resources :genres, only: [:index, :show]
 		resources :favorites, only: [:index, :destroy]
 		resources :carts, only: [:show, :update, :destroy]
-        resources :order, only: [:show, :purchase_complete, :new]
-
+        resources :order, only: [:show, :new]
 
         post '/purchase_complete' => 'order#purchase_complete'
         # post '/create' => 'cart_items#create'

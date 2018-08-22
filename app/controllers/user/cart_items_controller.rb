@@ -1,27 +1,6 @@
 class User::CartItemsController < ApplicationController
 
-	def create
-
-		@cart = Cart.find_by(user_id: current_user.id)
-		item = Item.find(params[:item_id])
-		#@cart_item = @cart.add_item(item.id)
-		@cart_item = CartItem.new(cart_id: @cart.id,item_id: item.id, quantity: 1)
-
-		@cart_items = @cart.cart_items
-
-		if @cart_items.include?(@cart_item)
-			 current_item.idncrement(:quantity, 1)
-		else
-			current_item = cart_items.build(item_id: item_id)
-		  if @cart_item.save
-	         redirect_to user_cart_path(@cart), notice: 'カートに商品が追加されました。'
-	      else
-	         redirect_to user_item_path(item.id)
-	      end
-		end
-		#binding.pry
-
-	end
+	
 
 	def destroy
     	@cart_item.destroy
