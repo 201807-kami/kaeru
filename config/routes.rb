@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 		resources :labels do
 			get :autocomplete_label_name, on: :collection
 		end
+		resources :genres
 		resources :users, only: [:index, :show, :edit, :update]
 		resources :recommended_items
 	end
