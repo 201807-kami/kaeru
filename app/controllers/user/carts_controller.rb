@@ -5,11 +5,10 @@ class User::CartsController < ApplicationController
 	def create
     @cart = Cart.find_by(user_id: current_user)
 		item = Item.find(params[:id])
-		#@cart_item = @cart.add_item(item.id)
 		@cart_items = @cart.cart_items
+
     if CartItem.exists?(item_id: item.id)
       @cart_item = CartItem.where(item_id: item.id)
-            binding.pry
       @cart_item.quantity += 1
       @cart_item.update
       redirect_to user_items_path, notice: 'カートに商品が追加されました。'
