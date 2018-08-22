@@ -1,10 +1,13 @@
-<div class="col-md-10">
+
 
 <p>商品一覧ページ</p>
 
 <%= link_to "トップページへ", root_path %>
 
 <%= link_to "ジャンル一覧へ", user_genres_path %>
+
+
+
 
 <table class="table table-bordered">
 	<td>商品一覧</td>
@@ -19,9 +22,9 @@
 	          <td><%= attachment_image_tag item, :item_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg", size:"100x100" %></td>
 	          <td><%= item.title %></td>
 	          <td>¥<%= item.price %></td>
-	          <td>アーティスト</td>
-	          <td>ジャンル</td>
-	          <td>レーベル</td>
+	          <td><%= item.artist.name %></td>
+	          <td><%= item.genre_id %></td>
+	          <td><%= item.label.name %></td>
 	           <td><%= link_to "詳細", user_item_path(item.id)%></td>
 	           <td><%= link_to "お気に入りに追加", add_item_path(item), method: :post %></td>
 	        </tr>
