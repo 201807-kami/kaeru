@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2018_08_21_070037) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 1
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -117,13 +119,6 @@ ActiveRecord::Schema.define(version: 2018_08_21_070037) do
     t.string "payment_method"
     t.integer "total_price"
     t.string "status", default: "受付中"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "recommended_items", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "place_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
