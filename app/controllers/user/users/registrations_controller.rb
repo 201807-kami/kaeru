@@ -2,7 +2,7 @@
 
 class User::Users::RegistrationsController < Devise::RegistrationsController
   layout false
-  # before_action :configure_sign_up_params, only: [:create]
+  #before_action :configure_sign_up_params, only: [:create]
 
 
   # GET /resource/sign_up
