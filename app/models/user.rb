@@ -19,6 +19,7 @@ class User < ApplicationRecord
   validates :tel, presence: true, format: {with: /\A[0-9-]{,14}\z/}
 
   def leave
+    self.password = SecureRandom.uuid
     self.leave_at = Time.now
     self.save!
   end
