@@ -1,26 +1,12 @@
 class User::CartsController < ApplicationController
 	 before_action  only: [:update, :delete]
 
-
-	def create
-    @cart = Cart.find_by(user_id: current_user)
-		item = Item.find(params[:id])
-		@cart_items = @cart.cart_items
-
-    if CartItem.exists?(item_id: item.id)
-      @cart_item = CartItem.where(item_id: item.id)
-      @cart_item.quantity += 1
-      @cart_item.update
-      redirect_to user_items_path, notice: 'カートに商品が追加されました。'
-    else
-      @cart_item = CartItem.new(cart_id: @cart.id,item_id: item.id, quantity: 1)
-      if @cart_item.save
-         redirect_to user_items_path, notice: 'カートに商品が追加されました。'
-      else
-         redirect_to user_item_path(item.id)
-      end
-    end
-  end
+	def page
+		cart = Cart.new
+        cart.user_id = current_user.id
+    	cart.save
+		redirect_to user_items_path
+	end
 
 
 
@@ -51,11 +37,12 @@ class User::CartsController < ApplicationController
 
  private
 
+
   	#def setup_cart_item!
    	 	#@cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
   	#end
  	def cart_params
-  		params.require(:cart).permit(:cart_item_id, :user_id,)
+  		params.require(:cart).permit(:item_id, :user_id,)
   	end
 end
 

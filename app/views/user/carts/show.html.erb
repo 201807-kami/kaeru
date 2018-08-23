@@ -3,7 +3,7 @@
 <% end %>
 <br>
 <h1>cart詳細ページ</h1>
-<h2>　　　カートに追加された商品</h2>
+<h2>　　カートに追加された商品</h2>
 <br>
 
 <br>
@@ -38,6 +38,4 @@
 <%= link_to "ショッピングを続ける", user_items_path %>
 
 <br>
-<%= button_to 'カートを空にする', user_cart_path(@cart), method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: 'fbtn' %>
-
-aaaa<%= @cart.user_id %>
+<%= button_to 'カートを空にする', user_cart_path(@cart), method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'} %>

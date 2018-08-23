@@ -58,7 +58,6 @@ class Admin::ItemsController < ApplicationController
 			discs_attributes: [:id, :disc_number, :_destroy,
 				songs_attributes: [:id, :name, :_destroy]])
 	end
-	
 
 
 
