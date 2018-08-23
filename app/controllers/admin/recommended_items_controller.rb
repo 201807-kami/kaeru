@@ -5,6 +5,7 @@ class Admin::RecommendedItemsController < ApplicationController
 	include ItemsHelper
 	
 	def index
+		@genre = Genre.all
 		@items = Item.all
 	end
 
