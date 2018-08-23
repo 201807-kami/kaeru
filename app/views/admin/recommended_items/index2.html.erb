@@ -16,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @items.where(recommended: genre.id).each do |item| %>
+          <% @items.where(genre).each do |item| %>
             <tr>
               <td class="text-center"><%= item.id %></td>
               <td class="image_tag"></td>
