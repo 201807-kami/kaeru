@@ -4,10 +4,19 @@ class User::Users::RegistrationsController < Devise::RegistrationsController
   layout false
   #before_action :configure_sign_up_params, only: [:create]
 
+def after_sign_up_path_for(resource)
+     user_cart_page_path
+end
 
-  # GET /resource/sign_up
+
+    # GET /resource/sign_up
   # def new
   #   super
+
+  # private
+  #   def cart_params
+  #     params.require(:cart).permit(:user_id)
+  #   end
   # end
 
 
@@ -20,6 +29,7 @@ class User::Users::RegistrationsController < Devise::RegistrationsController
       #@cart.save
     #end
   #end
+
 
 
   # GET /resource/edit

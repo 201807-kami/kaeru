@@ -2,7 +2,7 @@
 <p>商品詳細</p>
 
 <%= link_to "item一覧へ", user_items_path %>
-<%= link_to "カートに入れる", user_cart_item_create_path(@item) %>
+<%= link_to "カートに入れる", user_item_cart_items_path(@item), method: :post %>
 
 
 

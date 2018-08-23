@@ -5,6 +5,8 @@ class Item < ApplicationRecord
 	accepts_nested_attributes_for :discs, allow_destroy: true
 
 	has_many :cart_items
+	has_many :carts
+
 
 
 	has_many :favorites
