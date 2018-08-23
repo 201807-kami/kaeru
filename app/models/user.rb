@@ -15,7 +15,12 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :last_name_furigana, presence: true
   validates :address, presence: true
-  #validates :zip, presence: true, format: {with: /\A\d{7}$\z/}
-  #validates :tel, presence: true, format: {with: /\A[0-9-]{,14}\z/}
+  validates :zip, presence: true, format: {with: /\A\d{7}$\z/}
+  validates :tel, presence: true, format: {with: /\A[0-9-]{,14}\z/}
+
+  def leave
+    self.leave_at = Time.now
+    self.save!
+  end
 
 end
