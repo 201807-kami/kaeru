@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
         # belongs_to :cart
         has_many :items
-        belongs_to :cart
+        #belongs_to :cart
 
 
   has_many :favorites
