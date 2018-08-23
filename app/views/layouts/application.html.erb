@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="ja">
+
   <head>
     <title>Kaeru</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="swiper.min.css">
   </head>
 
 <body>
-
 
   <div class="container">
   <!-- header -->
@@ -75,6 +78,8 @@
         </div>
      </div>
 </div>
+
+
                <div class="footer footerc">
                    <div class="container mt-4">
                           <div class="text-center">
@@ -99,5 +104,6 @@
 
         <!-- footer -->
 
+   <script src="swiper.min.js"></script>
   </body>
 </html>

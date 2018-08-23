@@ -5,11 +5,11 @@ class User::Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  def new
-    if User.where.not(leave_at: nil).exists?
-    session[:keep_signed_in] = false
-    end
-  end
+  #def new
+    #if User.where.not(leave_at: nil).exists?
+    #session[:keep_signed_in] = false
+    #end
+  #end
 
   # POST /resource/sign_in
   # def create
