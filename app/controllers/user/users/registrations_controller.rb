@@ -11,6 +11,16 @@ class User::Users::RegistrationsController < Devise::RegistrationsController
   # end
 
 
+  #POST /resource
+  #def create
+    #super
+      #if after_user_signed_in
+      #@cart = Cart.new
+      #@cart.user_id = current_user.id
+      #@cart.save
+    #end
+  #end
+
 
   # GET /resource/edit
   # def edit

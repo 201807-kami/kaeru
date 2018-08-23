@@ -1,12 +1,13 @@
 class Admin::ItemsController < ApplicationController
-	# protect_from_forgery except: :update
+	layout 'admin'
+
 	include ItemsHelper
 	
 	def index
 		@search_form = Admin::ItemSearchForm.new(search_params)
-	    @search_form.stock_type = :less if @search_form.stock_type.blank?
-	    @items = @search_form.search(params[:page])
-	    session['search_params'] = view_context.search_conditions_keeper(params, [:genre_id, :title])
+    @search_form.stock_type = :less if @search_form.stock_type.blank?
+    @items = @search_form.search(params[:page])
+    session['search_params'] = view_context.search_conditions_keeper(params, [:genre_id, :title])
 	end
 
 	def new
@@ -49,8 +50,8 @@ class Admin::ItemsController < ApplicationController
 
 	def search_params
     	return  nil if params[:search].nil?
-    	params.require(:search).permit(:genre_id, :title, :stock, :sort_type, :stock_type, statuses: [])
-  	end
+    	params.require(:search).permit(:genre_id, :title, :stock, :sort_type, :stock_type, status: [])
+  end
 
 	def item_params
 		params.require(:item).permit(

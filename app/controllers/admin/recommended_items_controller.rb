@@ -1,4 +1,7 @@
 class Admin::RecommendedItemsController < ApplicationController
+	layout 'admin'
+
+	
 	include ItemsHelper
 	
 	def index
