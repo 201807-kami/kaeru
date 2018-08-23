@@ -16,5 +16,10 @@ class User::UsersController < ApplicationController
         redirect_to user_path(@user.id)
     end
 
+    def leave
+        current_user.leave
+        redirect_to root_path
+    end
+
 
 end

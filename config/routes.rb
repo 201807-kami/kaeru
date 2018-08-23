@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 		resources :labels do
 			get :autocomplete_label_name, on: :collection
 		end
+		resources :genres
 		resources :users, only: [:index, :show, :edit, :update]
 		resources :recommended_items
 	end
@@ -38,7 +39,10 @@ Rails.application.routes.draw do
 		resources :genres, only: [:index, :show]
 		resources :favorites, only: [:index, :destroy]
 		resources :carts, only: [:show, :update, :destroy]
-        resources :order, only: [:show, :new]
+		resources :order, only: [:show, :new]
+        resources :users, only: [:destroy] do
+        get :leave
+        end
 
         post '/purchase_complete' => 'order#purchase_complete'
         # post '/create' => 'cart_items#create'
