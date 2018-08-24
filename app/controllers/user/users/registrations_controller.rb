@@ -12,11 +12,18 @@ end
     # GET /resource/sign_up
   # def new
   #   super
+<<<<<<< HEAD
+=======
 
+>>>>>>> 81bce10b547b648a9070e4426fae7c786ada7a56
   # private
   #   def cart_params
   #     params.require(:cart).permit(:user_id)
   #   end
+<<<<<<< HEAD
+
+=======
+>>>>>>> 81bce10b547b648a9070e4426fae7c786ada7a56
   # end
 
 
@@ -29,7 +36,10 @@ end
       #@cart.save
     #end
   #end
+<<<<<<< HEAD
+=======
 
+>>>>>>> 81bce10b547b648a9070e4426fae7c786ada7a56
 
 
   # GET /resource/edit

@@ -2,7 +2,8 @@
 <p>商品詳細</p>
 
 <%= link_to "item一覧へ", user_items_path %>
-<%= link_to "カートに入れる", user_item_cart_items_path(@item), method: :post %>
+<%= button_to 'カートに入れる',user_item_cart_items_path(@item) , class: 'fbtn' %>
+
 
 
 

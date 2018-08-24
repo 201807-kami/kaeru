@@ -39,3 +39,5 @@
 
 <br>
 <%= button_to 'カートを空にする', user_cart_path(@cart), method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'} %>
+
+<%= button_to '注文をする', new_user_order_path, method: :get, class: 'fbtn' %>
