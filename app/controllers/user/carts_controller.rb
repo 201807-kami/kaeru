@@ -11,9 +11,10 @@ class User::CartsController < ApplicationController
 
 
   	def show
-      	@cart = Cart.find(params[:id])
-      	@cart_items = CartItem.where(cart_id: @cart.id)
-  		#@carts = current_cart
+      	@cart = Cart.find_by(user_id: current_user)
+      	@cart_items = @cart.cart_item.all
+    #   	@cart_items = CartItem.where(cart_id: @cart.id)
+  		# #@carts = current_cart
   		#@item = item.find(params[:item_id])
 		#@cart_item = @cart.cart_items.
 
@@ -28,11 +29,9 @@ class User::CartsController < ApplicationController
   	end
 
   	def destroy
-    	@cart = current_cart
+    	@cart = Cart.find(params[:id])
    	 	@cart.destroy
-    	session[:cart_id] = nil
-      	redirect_to user_items_path, notice: 'カートが空になりました。'
-    	end
+      	redirect_to user_cart_path, notice: 'カートが空になりました。'
   	end
 
  private
@@ -42,7 +41,7 @@ class User::CartsController < ApplicationController
    	 	#@cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
   	#end
  	def cart_params
-  		params.require(:cart).permit(:item_id, :user_id,)
+  		params.require(:cart).permit(:item_id, :user_id, :cart_item)
   	end
 end
 

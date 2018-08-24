@@ -1,4 +1,7 @@
 class Admin::UsersController < ApplicationController
+
+  layout 'admin'
+
   def index
     @search_form = Admin::UserSearchForm.new(search_params)
     @users = @search_form.search(params[:page])
