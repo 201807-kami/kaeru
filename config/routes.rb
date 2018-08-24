@@ -39,7 +39,10 @@ Rails.application.routes.draw do
 		resources :genres, only: [:index, :show]
 		resources :favorites, only: [:index, :destroy]
 		resources :carts, only: [:show, :update, :destroy]
-        resources :order, only: [:show, :new]
+		resources :order, only: [:show, :new]
+        resources :users, only: [:destroy] do
+        get :leave
+        end
 
         post '/purchase_complete' => 'order#purchase_complete'
         # post '/create' => 'cart_items#create'
