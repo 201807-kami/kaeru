@@ -1,6 +1,7 @@
 class User::UsersController < ApplicationController
 	
 	def top
+        @item = Item.all
 	end
 
 	def show

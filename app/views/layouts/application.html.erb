@@ -28,7 +28,7 @@
                                       <span class="icon-bar"></span>
                                       <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand">kaeru&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                            <a class="navbar-brand">kaeru&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                     </div>
 
                             <ul class="nav navbar-nav">
@@ -45,14 +45,13 @@
                                               <% end %>
                                           </li>
 
-                                             <% if user_signed_in? %>
+                                          <% if user_signed_in? %>
                                               <li><%= link_to 'user', user_path(current_user.id), class: "glyphicon glyphicon-user" %></li>
-                                             <% else %>
-
-                                         <li><%= link_to '新規登録', new_user_registration_path, class: "glyphicon glyphicon-user" %></li>
-
-                                          <li><%= link_to 'login', user_session_path, class: "glyphicon glyphicon-log-in" %></li>
+                                          <% else %>
+                                          　　<li><%= link_to '新規登録', new_user_registration_path, class: "glyphicon glyphicon-user" %></li>
+                                          　　<li><%= link_to 'login', user_session_path, class: "glyphicon glyphicon-log-in" %></li>
                                           <% end %>
+
                                           <li><%= link_to 'logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
                                           <li><%= link_to "お気に入り", user_favorites_path, class: "glyphicon glyphicon-heart" %></li>
                             </ul>
