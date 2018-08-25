@@ -25,7 +25,8 @@
           <span class="pricefont">¥<%= @item.price %></span><%= @item.status %>
         </dd>
       </dl>
-      <%= link_to "カートに追加", user_item_cart_items_path(@item), method: :post, class: "btn btn-danger btn-lg btn-block" %>
+      <%= link_to user_carts_path(item_id: @item.id), method: :post,class: "btn btn-danger btn-lg btn-block" do %>カートに追加する<% end %>
+
       <%= link_to "", add_item_path(@item), method: :post, class: "btn-group btn-group-xs btn btn-default btn-lg btn-block glyphicon glyphicon-heart" %>
     </div>
 
