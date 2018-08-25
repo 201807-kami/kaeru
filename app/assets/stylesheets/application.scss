@@ -18,6 +18,10 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.navbar-brand {
+	font-size: 50px;
+}
+
 .navbar-toggle{
 	background-color: #ecedeb;
 }
