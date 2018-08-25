@@ -10,12 +10,11 @@
     <div class="col-md-4">
 
             <h3 class="border-botom"><%= @item.title %></h3>
-            <p><%= link_to "このアーティスト", user_artist_path(@item) %></p>
+            <p><%= link_to @item.artist.name, user_artist_path(@item.artist_id) %></p>
             <h4><span class="label label-default"><%= @item.genre.name %></span></h1>
             <p>発売日<%= @item.release_date %></p>
             <h4>レーベル名</h4>
             <p><%= @item.label.name %></p>
-            <p><%= @item.status %>
 
     </div>
 
@@ -23,11 +22,41 @@
       <dl>
         <dt>値段(税込)</dt>
         <dd>
-          <span class="pricefont">¥<%= @item.price %></span>
+          <span class="pricefont">¥<%= @item.price %></span><%= @item.status %>
         </dd>
       </dl>
       <%= link_to "カートに追加", user_item_cart_items_path(@item), method: :post, class: "btn btn-danger btn-lg btn-block" %>
       <%= link_to "", add_item_path(@item), method: :post, class: "btn-group btn-group-xs btn btn-default btn-lg btn-block glyphicon glyphicon-heart" %>
     </div>
+
+    <div class="col-md-7">
+
+    <div class="col-md-6">
+         <table class="table">
+          <thead>
+            <tr>
+              <th>収録内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>曲名</th>
+              <td></td>
+              <td>web</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>・構成数｜枚</p>
+    </div>
+
+
+    </div>
+
+
+
+
+
+
 
 <%= link_to "item一覧へ", user_items_path %>

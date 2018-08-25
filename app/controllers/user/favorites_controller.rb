@@ -18,8 +18,8 @@ class User::FavoritesController < ApplicationController
 
     #お気に入り削除用アクション
     def destroy
-        @favorite = Favorite.find(params[:id])
-	    @favorite.destroy
+        favorite = Favorite.find(params[:id])
+	    favorite.destroy
 	    redirect_to user_items_path
     end
 
