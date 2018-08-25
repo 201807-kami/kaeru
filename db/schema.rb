@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_21_070037) do
+ActiveRecord::Schema.define(version: 2018_08_25_102817) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2018_08_21_070037) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 1
+    t.integer "cart_item_id"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
@@ -59,6 +60,10 @@ ActiveRecord::Schema.define(version: 2018_08_21_070037) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cart_item"
+    t.integer "cart_item_id"
+    t.integer "item_id"
+    t.integer "quantity", default: 0
   end
 
   create_table "disc_songs", force: :cascade do |t|
@@ -95,7 +100,7 @@ ActiveRecord::Schema.define(version: 2018_08_21_070037) do
     t.string "title"
     t.integer "price"
     t.integer "stock"
-    t.integer "sales_quantity"
+    t.integer "sales_quantity", default: 0
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -112,8 +117,17 @@ ActiveRecord::Schema.define(version: 2018_08_21_070037) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "item_id"
+    t.string "item_title"
+    t.integer "price"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
-    t.integer "cart_id"
     t.string "address"
     t.date "delivery_date"
     t.string "payment_method"
@@ -121,6 +135,8 @@ ActiveRecord::Schema.define(version: 2018_08_21_070037) do
     t.string "status", default: "受付中"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "item_amount"
   end
 
   create_table "songs", force: :cascade do |t|
@@ -151,8 +167,6 @@ ActiveRecord::Schema.define(version: 2018_08_21_070037) do
     t.string "zip"
     t.string "tel"
     t.string "leave_at"
-    t.string "uid"
-    t.index ["provider", "uid"], name: "index_members_on_provider_and_uid", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -38,8 +38,10 @@ Rails.application.routes.draw do
 		resources :artists, only: [:index, :show]
 		resources :genres, only: [:index, :show]
 		resources :favorites, only: [:index, :destroy]
-		resources :carts, only: [:show, :update, :destroy]
-		resources :order, only: [:show, :new]
+		resources :carts, only: [:index, :new, :create, :show, :update, :destroy]
+		resources :orders, only: [:create, :new] do
+		get :complete
+		end
         resources :users, only: [:destroy] do
         get :leave
         end

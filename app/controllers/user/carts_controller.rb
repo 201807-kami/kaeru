@@ -1,49 +1,43 @@
 class User::CartsController < ApplicationController
-	 before_action  only: [:update, :delete]
+  
+  before_action :find_cart, only: [:update, :destroy]
 
-	def page
-		cart = Cart.new
-        cart.user_id = current_user.id
-    	cart.save
-		redirect_to user_items_path
-	end
+  def index
+    @carts = current_user.carts
+  end
 
+  def create
+    Cart.add_item(params[:item_id], current_user)
+    redirect_to user_carts_path(current_user)
+  end
 
+  def update
+    @carts = current_user.carts
+    @carts.update
+    redirect_to new_user_order_path
+  end
 
-  	def show
-      	@cart = Cart.find(params[:id])
-      	@cart_items = CartItem.where(cart_id: @cart.id)
-  		#@carts = current_cart
-  		#@item = item.find(params[:item_id])
-		#@cart_item = @cart.cart_items.
+  def destroy
+    @cart.destroy!
+    redirect_to action: :index
+  end
 
-    	# @cart_item.quantity += params[:quantity].to_i
-    	@cart.cart_items.each do |cart_item|
-    	@price += cart_item.item.price*cart_item.quantity
-  	end
-
-  	def update
-   	 	#@cart_item.update(quantity: params[:quantity].to_i)
-    	#redirect_to current_cart
-  	end
-
-  	def destroy
-    	@cart = current_cart
-   	 	@cart.destroy
-    	session[:cart_id] = nil
-      	redirect_to user_items_path, notice: 'カートが空になりました。'
-    	end
-  	end
-
- private
+  private
 
 
-  	#def setup_cart_item!
-   	 	#@cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
-  	#end
- 	def cart_params
-  		params.require(:cart).permit(:item_id, :user_id,)
-  	end
+  def cart_session_id
+    if session[:cart_session_id].blank?
+      session[:cart_session_id] = SecureRandom.uuid
+    end
+    session[:cart_session_id]
+  end
+
+  def find_cart
+    if user_signed_in?
+      @cart = current_user.carts.find(params[:id])
+    else
+      @cart = Cart.find_by(user: nil, session_id: cart_session_id)
+      raise ActiveRecord::RecordNotFound if @cart.nil?
+    end
+  end
 end
-
-
