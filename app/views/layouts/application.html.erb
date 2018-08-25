@@ -28,20 +28,28 @@
                                       <span class="icon-bar"></span>
                                       <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand">kaeru&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                            <a class="navbar-brand">kaeru&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                     </div>
 
                             <ul class="nav navbar-nav">
-                                          <li>&nbsp;&nbsp;<%= form_tag user_items_path, :method => 'get' do %>
+                                          <li>
+                                              &nbsp;&nbsp;<%= form_tag user_items_path, :method => 'get' do %>
                                               <%= text_field_tag :search, params[:search] %>
-                                              <%= submit_tag "Search", :title => nil %>
+                                              <%= submit_tag "Item Search", :title => nil %>
                                               <% end %>
                                           </li>
-                                             <% if user_signed_in? %>
-                                             <li><%= link_to 'user', user_path(current_user.id), class: "glyphicon glyphicon-user" %></li>
-                                          <% else %>
+                                          <li>
+                                              &nbsp;&nbsp;<%= form_tag user_artists_path, :method => 'get' do %>
+                                              <%= text_field_tag :search, params[:search] %>
+                                              <%= submit_tag "Artist Search", :name => nil %>
+                                              <% end %>
+                                          </li>
 
-                                         <li><%= link_to '新規登録', new_user_session_path, class: "glyphicon glyphicon-user" %></li>
+                                             <% if user_signed_in? %>
+                                              <li><%= link_to 'user', user_path(current_user.id), class: "glyphicon glyphicon-user" %></li>
+                                             <% else %>
+
+                                         <li><%= link_to '新規登録', new_user_registration_path, class: "glyphicon glyphicon-user" %></li>
 
                                           <li><%= link_to 'login', user_session_path, class: "glyphicon glyphicon-log-in" %></li>
                                           <% end %>
