@@ -4,11 +4,6 @@
 
 <%= link_to "ジャンル一覧へ", user_genres_path %>
 
-<%= form_tag user_artists_path, :method => 'get' do %>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag "アーティストで検索", :name => nil %>
-<% end %>
-
 
 <table class="table table-bordered">
 	<td>商品一覧</td>

@@ -12,13 +12,21 @@ class User::UsersController < ApplicationController
 	end
 	def update
 	    @user = User.find(params[:id])
-        @user.update(user_params)
-        redirect_to user_path(@user.id)
+        if @user.update(user_params)
+        	flash[:success] = 'Successfully'
+        redirect_to user_path
+        else
+    	render :edit
+        end
     end
 
     def leave
-        current_user.leave
+        if current_user.leave
+        flash[:success] = '退会しました。　ありがとうございました。'
         redirect_to root_path
+        else
+        render :leave
+        end
     end
 
 
