@@ -1,8 +1,15 @@
 
-<p><%= @genre.name %>のオススメ一覧<p>
+
+<div class="panel panel-default">
+	 <div class="panel-heading">
+
+	    <%= @genre.name %>のオススメ一覧
+
+     </div>
+
+</div>
+
 <% @items.each do |item| %>
-
-
 <table class="table table-bordered table-sm table-hover">
 	<caption></caption>
 	<thead>
