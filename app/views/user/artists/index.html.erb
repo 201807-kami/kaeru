@@ -1,24 +1,32 @@
 
 <%= link_to "ジャンル一覧へ", user_genres_path %>
 
-<table class="table table-bordered">
-	<td>アーティスト一覧</td>
-	<td><%= link_to "商品一覧", user_items_path %></td>
-</table>
-
 <% @artist.each do |artist| %>
-	  <table class="table table-bordered table-sm table-hover">
 
-	    <tbody>
-	        <tr>
-	          <td width="80">ここに写真がきます</td>
-	          <td><%= artist.name %></td>
-	          <td><%= link_to "詳細", user_artist_path(artist.id) %></td>
-	           <span class="my-2"></span>
-	        </tr>
-	    </tbody>
+	  <table class="table">
+		    <tbody>
+		        <tr>
+		          <td class="col-md-2"><%= attachment_image_tag artist, :artist_image, :fill, 130, 130, format: 'jpeg', class: "pull-left profile-img" %>
+		           </td>
+		             <td class="col-md-5">
+				       	<% artist.items.each do |item| %>
+				       	  <h4><%= item.title %></h4>
+				       	   <%=link_to artist.name, user_artist_path(artist.id) %>
+				       	   <P>発売日</P>
+		             </td>
+		              <td class="col-md-3">
+				           <p>値段(税込)｜¥
+				          <span class="pricefontartists"><%= item.price %></span>
+				        <dl>
+				        <%= link_to "カートに追加", user_item_cart_items_path(item), method: :post, class: "btn btn-danger" %>
+				        <%= link_to "", add_item_path(item), method: :post, class: "btn-group btn-group-xs btn btn-default  glyphicon glyphicon-heart" %>
+				        </dl>
+				        <p><%= item.status %></p>
+
+				       <% end %>
+		             </td>
+		        </tr>
+		    </tbody>
 	  </table>
 
 <% end %>
-
-</div>
