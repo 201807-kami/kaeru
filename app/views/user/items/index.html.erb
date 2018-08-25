@@ -1,12 +1,13 @@
 
 
-<p>商品一覧ページ</p>
-
 <%= link_to "トップページへ", root_path %>
 
 <%= link_to "ジャンル一覧へ", user_genres_path %>
 
-
+<%= form_tag user_artists_path, :method => 'get' do %>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "アーティストで検索", :name => nil %>
+<% end %>
 
 
 <table class="table table-bordered">
@@ -15,18 +16,30 @@
 </table>
 
 	  <table class="table table-bordered table-sm table-hover">
+	  	<thead>
+	  		<th>商品写真</th>
+	  		<th>商品名</th>
+	  		<th>値段</th>
+	  		<th>アーティスト</th>
+	  		<th>ジャンル名</th>
+	  		<th>レーベル名</th>
+	  		<th>商品詳細</th>
+	  		<th>お気に入りに追加</th>
+	  		<th>カートに追加</th>
+	  	</thead>
 
-	    <tbody>
+	    <tbody class="itemtablebody">
 	      <% @items.each do |item| %>
 	        <tr>
 	          <td><%= attachment_image_tag item, :item_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg", size:"100x100" %></td>
 	          <td><%= item.title %></td>
 	          <td>¥<%= item.price %></td>
 	          <td><%= item.artist.name %></td>
-	          <td><%= item.genre_id %></td>
+	          <td><%= item.genre.name %></td>
 	          <td><%= item.label.name %></td>
 	           <td><%= link_to "詳細", user_item_path(item.id)%></td>
-	           <td><%= link_to "お気に入りに追加", add_item_path(item), method: :post %></td>
+	           <td><%= link_to "お気に入り", add_item_path(item), method: :post %></td>
+	           <td>カートに入れる</td>
 	        </tr>
 	      <% end %>
 	    </tbody>
