@@ -4,6 +4,12 @@ class User::CartsController < ApplicationController
 
   def index
     @carts = current_user.carts
+
+    @price = 0
+
+    @carts.each do |carts|
+    @price += carts.item.price*carts.quantity
+      end
   end
 
   def create
