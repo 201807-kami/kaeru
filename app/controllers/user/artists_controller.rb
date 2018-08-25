@@ -1,6 +1,6 @@
 class User::ArtistsController < ApplicationController
 	def index
-	 @artist = Artist.all
+	 @artist = Artist.search(params[:search])
 	end
 	def show
 	 @artist = Artist.find(params[:id])
