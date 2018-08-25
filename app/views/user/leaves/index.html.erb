@@ -6,6 +6,10 @@
   <br><h7>・購入履歴</h7>
   <br><h7>・（その他、ログインを必要とするすべてのサービス）</h7>
 
+<br><br><%= link_to user_path(current_user.id), class: 'btn btn-default' do %>
+  <span>戻る</span>
+  <% end %>
 
-<br><br><%= link_to '戻る', user_path(current_user.id) %>
-<br><br><%= link_to '退会する', user_user_leave_path(current_user.id) %>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to user_user_leave_path(current_user.id), class: 'btn btn-default' do %>
+<span>退会する</span>
+<% end %>
