@@ -3,15 +3,17 @@
 <% end %>
 
 
-<% @item.each do |item| %>
+
   <div class="swiper-container">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"><%= f.attachment_field :item_image %></div>
-              <div class="swiper-slide"><%= f.attachment_field :item_image %></div>
-              <div class="swiper-slide"><%= f.attachment_field :item_image %></div>
-            </div>
-  </div>
-<% end %>
+              <% @items.each do |item| %>
+              <div class="swiper-slide"><%= attachment_image_tag item, :item_image %></div>
+ <!--              <div class="swiper-slide"><%= item.item_image %></div>
+              <div class="swiper-slide"><%= item.item_image %></div> -->
+            <!-- </div> -->
+          <% end %>
+          </div>
+        </div>
 
 
 <p><%= link_to '商品一覧ページへ', user_items_path %><p>

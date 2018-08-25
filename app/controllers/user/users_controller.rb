@@ -1,7 +1,7 @@
 class User::UsersController < ApplicationController
 	
 	def top
-        @item = Item.all
+        @items = Item.where(recommended: "1")
 	end
 
 	def show
