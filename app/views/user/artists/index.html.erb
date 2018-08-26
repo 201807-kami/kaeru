@@ -18,8 +18,8 @@
 				           <p>値段(税込)｜¥
 				          <span class="pricefontartists"><%= item.price %></span>
 				        <dl>
-				        <%= link_to "カートに追加", user_item_cart_items_path(item), method: :post, class: "btn btn-danger" %>
-				        <%= link_to "", add_item_path(item), method: :post, class: "btn-group btn-group-xs btn btn-default  glyphicon glyphicon-heart" %>
+				        <p><%= link_to "カートに追加", user_item_cart_items_path(item), method: :post, class: "btn btn-danger glyphicon glyphicon-shopping-cart" %></p>
+				        <p><%= link_to "お気に入り", add_item_path(item), method: :post, class: "btn-group btn-group-xs btn btn-default  glyphicon glyphicon-heart" %></p>
 				        </dl>
 				        <p><%= item.status %></p>
 
