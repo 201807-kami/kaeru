@@ -1,4 +1,7 @@
 
+
+<div class="toriaezu">
+
 		 <h4>
 		     アーティスト詳細
 		 </h4>
@@ -8,10 +11,27 @@
 			    	<p><%= link_to "アーティスト一覧へ", user_artists_path %></p>
 			    	<h4>ディスコグラフィ</h4>
 
+		<div class="center-block">
+			<div class="col-md-3">
+				<% @artist.items.each do |item| %>
+				<div>
+					<p><%= attachment_image_tag item, :item_image, :fill, 130, 130, format: 'jpeg', class: "profile-img center-block" %></p>
+					<h4><%= item.title %></h4>
+					<P>シングル</P>
+					<p>発売日 | </p>
+					<p>価格 | ¥<%= item.price %></p>
+					<p><%= link_to user_carts_path(item_id: item.id), method: :post,class: "btn btn-danger glyphicon glyphicon-shopping-cart btn-xs" do %>カートに追加する<% end %>
+					</p>
+					<p><%= link_to "お気に入り", add_item_path(item), method: :post, class: "btn-group btn-group-xs btn btn-default btn-xs glyphicon glyphicon-heart" %>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				sss
+			</div>
+			<div class="col-md-3">
+				aaa
+			</div>
+		</div>
 
-	<div class="col-md-3">aaa
-	</div>
-	<div class="col-md-3">aaa
-	</div>
-	<div class="col-md-3">aaa
-	</div>
+ <% end %>
