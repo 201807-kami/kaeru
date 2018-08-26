@@ -4,10 +4,10 @@
 
 
 
-  <div class="swiper-container">
+  &nbsp;&nbsp;&nbsp;&nbsp;<div class="swiper-container">
             <div class="swiper-wrapper">
               <% @items.each do |item| %>
-              <div class="swiper-slide"><%= attachment_image_tag item, :item_image %></div>
+            <div class="swiper-slide"><%= attachment_image_tag item, :item_image, :fill, 500, 300 %></div>
  <!--              <div class="swiper-slide"><%= item.item_image %></div>
               <div class="swiper-slide"><%= item.item_image %></div> -->
             <!-- </div> -->
