@@ -44,6 +44,7 @@
                                               <%= submit_tag "Artist Search", :name => nil %>
                                               <% end %>
                                           </li>
+                                          <li><%= link_to 'お買い物', user_carts_path, class: "glyphicon glyphicon-shopping-cart" %></li>
 
                                           <% if user_signed_in? %>
                                               <li><%= link_to 'user', user_path(current_user.id), class: "glyphicon glyphicon-user" %></li>
@@ -59,7 +60,7 @@
                </nav>
 
     </header>
-</div>
+
 
 
 <div class="container">
@@ -110,7 +111,7 @@
                           </div>
                    </div>
                 </div>
-
+</div>
 
         <!-- footer -->
 
