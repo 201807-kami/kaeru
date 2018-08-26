@@ -13,7 +13,7 @@ class Admin::ArtistsController < ApplicationController
 
 	def create
 		@artist = Artist.new(artist_params)
-		@artist.save
+		@artist.save!
 		redirect_to admin_artists_path
 	end
 
@@ -42,6 +42,6 @@ class Admin::ArtistsController < ApplicationController
   end
 
 	def artist_params
-		params.require(:artist).permit(:id, :name, :description, :artist_image)
+		params.require(:artist).permit(:name, :description, :artist_image)
 	end
 end
