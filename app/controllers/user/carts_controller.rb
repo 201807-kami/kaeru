@@ -17,6 +17,13 @@ class User::CartsController < ApplicationController
     redirect_to user_carts_path(current_user)
   end
 
+  def update_item
+    @carts = current_user.carts
+    update_item = 0
+    @cart.update_item(quantity: params[:quantity].to_i)
+    redirect_to user_carts_path(current_user)
+  end
+
   def update
     @carts = current_user.carts
     @carts.update
@@ -40,7 +47,7 @@ class User::CartsController < ApplicationController
 
   def find_cart
     if user_signed_in?
-      @cart = current_user.carts.find(params[:id])
+      @cart = current_user.carts.find(params[:cart_id])
     else
       @cart = Cart.find_by(user: nil, session_id: cart_session_id)
       raise ActiveRecord::RecordNotFound if @cart.nil?

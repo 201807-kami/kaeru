@@ -3,13 +3,12 @@
       <div class="col-lg-9">
         <%= form_for @order, url: user_orders_path do |f| %>
         <div class="field">
-        <%= f.label :住所 %>
-        <%= f.text_area :address %>
+
         </div>
 
         <div class="field">
         <%= f.label :お支払い方法 %>
-        <%= f.select(:payment_method, [['選択して下さい', ''],['現金', '現金']]) %>
+        <%= f.select(:payment_method, [['選択して下さい', ''],['現金', '現金'],['クレジット支払い','クレジット支払い']]) %>
         </div>
 
           <table>

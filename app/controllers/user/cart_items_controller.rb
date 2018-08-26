@@ -1,23 +1,23 @@
 class User::CartItemsController < ApplicationController
 
-	def create
-        @cart = Cart.find_by(user_id: current_user)
-		item = Item.find(@item)
-         binding.pry
-		#@cart_items = @cart.item
+	# def create
+ #        @cart = Cart.find_by(user_id: current_user)
+	# 	item = Item.find(@item)
+ #         binding.pry
+	# 	#@cart_items = @cart.item
 
-    if CartItem.exists?(item_id: item.id)
-      @cart_item = CartItem.where(item_id: item.id)
-      @cart_item.quantity += 1
-      @cart_item.update
-      redirect_to user_items_path, notice: 'カートに商品が追加されました。'
-    elsif @cart_item = CartItem.new(cart_params)
-      @cart_item.save
-         redirect_to user_items_path, notice: 'カートに商品が追加されました。'
-      else
-         redirect_to user_item_path(item.id)
-      end
-  	end
+ #    if CartItem.exists?(item_id: item.id)
+ #      @cart_item = CartItem.where(item_id: item.id)
+ #      @cart_item.quantity += 1
+ #      @cart_item.update
+ #      redirect_to user_items_path, notice: 'カートに商品が追加されました。'
+ #    elsif @cart_item = CartItem.new(cart_params)
+ #      @cart_item.save
+ #         redirect_to user_items_path, notice: 'カートに商品が追加されました。'
+ #      else
+ #         redirect_to user_item_path(item.id)
+ #      end
+ #  	end
 
 	def destroy
     	@cart_item.destroy

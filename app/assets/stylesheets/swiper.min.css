@@ -10,8 +10,18 @@
  * Released on: July 31, 2018
  */
  .swiper-container, .swiper-slide {
-    width: 800px;
-    height: 300px;
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:100%;
+    object-fit: cover;
+    background-color: white;
+}
+
+.swiper-slide {
+	display: block;
+    margin: 0 auto;
+    text-align:center;
 }
 
 /*.swiper-container, .swiper-slide li >img {

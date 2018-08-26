@@ -26,8 +26,7 @@ class User::OrdersController < ApplicationController
 
   private
   def post_params
-    params.require(:order).permit(
-        :address, :delivery_date, :payment_method, :total_price, :user_id, :item_amount,
+    params.require(:order).permit(:address, :delivery_date, :payment_method, :total_price, :user_id, :item_amount,
         order_items_attributes: [:item_id, :quatity, :price]
     )
   end
