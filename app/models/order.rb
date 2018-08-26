@@ -3,6 +3,8 @@ class Order < ApplicationRecord
 	has_many :order_items
   accepts_nested_attributes_for :order_items
 
+  # validates_presence_of :address, :payment_method, :message => "を入力して下さい。"
+
 	def set_attribute
     set_address
     build_order_item_from_cart
