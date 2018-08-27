@@ -16,7 +16,7 @@
   <%= f.label :ステータス %><br>
   <%= f.select :status, [["未公開", "未公開"],["販売中","販売中"],["販売終了","販売終了"]] %><br>
   <%= f.label :おすすめ %><br>
-  <%= f.collection_select(:recommended, Genre.all, :id, :name) %><br>
+  <%= f.collection_select(:recommended, Genre.all, :id, :name, include_blank: true) %><br>
   <%= f.fields_for :discs do |df| %>
     <%= render partial: "disc_form", locals: {f: df } %>
     <% end %>

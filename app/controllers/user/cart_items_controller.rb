@@ -1,4 +1,5 @@
 class User::CartItemsController < ApplicationController
+  layout 'user'
 
 	# def create
  #        @cart = Cart.find_by(user_id: current_user)

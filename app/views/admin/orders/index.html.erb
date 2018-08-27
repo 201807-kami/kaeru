@@ -1,0 +1,67 @@
+<div class="container">
+		
+	<div class="card">
+		<div class="card-header">
+			<p>注文一覧</p>
+		</div>
+		<div class="card-body">
+			<%= form_for @search_form, as: 'search', url: admin_orders_path(format: :html), method: :get, html: {class: 'form-horizontal', id: 'form_order_search'} do |f| %>
+			<div class="form-group row">
+				<%= f.label :ordered_at_from, '購入日', class: 'col-1 col-form-label pr-0' %>
+				<div class="col-6">
+					<div class="form-inline">
+						<%= f.date_field :ordered_at_from, class: 'form-control', value: @search_form.ordered_at_from %>
+						<span><%= f.date_field :ordered_at_to, class: 'form-control', value: @search_form.ordered_at_to%></span>
+					</div>
+				</div>
+				<%= f.label :email, '購入者メール', class: 'col-2 col-form-label pr-0' %>
+				<div class="col-3">
+					<%= f.text_field :email, class: 'form-control'%>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-2">
+					<div class="form-check">
+						<label class="form-check-label">
+							<%= f.check_box :undelivered, class: 'form-check-input'%>
+							未配送のみ
+						</label>
+					</div>
+				</div>
+				<div class="col-2">
+					<%= f.submit '検 索', class: 'btn btn-primary btn-block' %>
+				</div>
+			</div>
+			<% end %>
+			<table class="table table-bordered table-sm small table-hover">
+				<thead>
+					<tr class="table-secondary">
+						<th>#</th>
+						<th>購入日</th>
+						<th>メールアドレス</th>
+						<th>購入価格</th>
+						<th>商品(数量)</th>
+						<th>配送</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @orders.each do |order| %>
+						<tr>
+							<td><%= order.id %></td>
+							<td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+							<td><%= order.user.email %></td>
+							<td><%= order.item_amount %></td>
+							<td><% order.order_items.each_with_index do |order_item| %>
+	                <%= order_item.item.title %>: <%= order_item.quantity %></td>
+	                <br>
+	                <% end %>
+							<td><%= order.status %></td>
+							<td><%= link_to '参照', admin_order_path(order) %></td>
+						</tr>
+						<% end %>
+				</tbody>
+			</table>
+	</div>
+</div>
+
