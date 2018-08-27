@@ -1,7 +1,6 @@
 class User::CartsController < ApplicationController
 
   layout 'user'
-  before_action :find_cart, only: [:update, :destroy]
 
   def index
     @carts = current_user.carts
