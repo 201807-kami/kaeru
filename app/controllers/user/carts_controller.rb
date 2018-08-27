@@ -8,7 +8,7 @@ class User::CartsController < ApplicationController
     @price = 0
 
     @carts.each do |carts|
-    @price += carts.item.price*carts.quantity
+    @price += carts.item.price * carts.quantity
       end
   end
 
