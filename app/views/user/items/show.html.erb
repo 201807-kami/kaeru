@@ -29,20 +29,26 @@
     </div>
 
 
-    <div class="col-md-7">
-         <table class="table">
-          <thead>
+<div class="col-md-7">
+    <table class="table">
+        <thead>
             <tr>
-              <td>収録内容</td>
+                <th>収録内容</th>
+                <th>アーティスト｜<%= @item.artist.name %></th>
             </tr>
-          </thead>
-          <tbody>
+        </thead>
+        <tbody>
+            <% @item.discs.each do |disc| %>
+            <% disc.disc_songs.each do |disc_song| %>
             <tr>
-            <td width="80px">曲名</td>
-            <td><%= @song.name %></td>
+            <td>・<%= disc_song.song.name %></td>
+            <td></td>
             </tr>
-          </tbody>
-        </table>
+            <% end %>
+            <% end %>
+        </tbody>
+    </table>
+
 
 <p>構成枚数｜<%= @disc.disc_number %></p>
 

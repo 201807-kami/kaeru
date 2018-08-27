@@ -5,7 +5,6 @@
 			    <p class="artistname"><%= @artist.name %></p>
 			    	<h4>プロフィール</h4>
 			    	<p><%= @artist.description %></p>
-			    	<p><%= link_to "すべてのアーティスト", user_artists_path, class: "button" %></p>
 
 			    	<h4 class="page-header">ディスコグラフィ</h4>
 
@@ -14,7 +13,7 @@
 		  <div class="col-sm-3 col-xl-3 md-3">
 					<%= attachment_image_tag item, :item_image, :fill, 130, 130, format: 'jpeg', class: "profile-img center-block" %>
 					<div>
-					<h4><%= item.title %></h4>
+					<h4><%= link_to item.title, user_item_path(item.id) %></h4>
 					<P>シングル</P>
 					<p>発売日 | </p>
 					<p>価格 | ¥<%= item.price %></p>
