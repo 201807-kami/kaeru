@@ -1,4 +1,5 @@
 class User::CartsController < ApplicationController
+
   layout 'user'
   before_action :find_cart, only: [:update, :destroy]
 
@@ -8,6 +9,7 @@ class User::CartsController < ApplicationController
     else
     redirect_to new_user_session_path
     end
+
   end
 
   def create
@@ -19,25 +21,25 @@ class User::CartsController < ApplicationController
     end
   end
 
-  def update_item
-    @carts = current_user.carts
-    update_item = 0
-    @cart.update_item(quantity: params[:quantity].to_i)
-    redirect_to user_carts_path(current_user)
-  end
-
   def update
-    @carts = current_user.carts
-    @carts.update
-    redirect_to new_user_order_path
+    @cart = Cart.find(params[:id])
+    @cart.update(cart_params)
+    redirect_to user_carts_path
   end
 
   def destroy
-    @cart.destroy!
+    @cart = Cart.find(params[:id])
+    @cart.destroy
     redirect_to action: :index
   end
 
+
   private
+
+  def cart_params
+      params.require(:cart).permit(:id, :quantity)
+  end
+
 
 
   def cart_session_id
@@ -47,12 +49,6 @@ class User::CartsController < ApplicationController
     session[:cart_session_id]
   end
 
-  def find_cart
-    if user_signed_in?
-      @cart = current_user.carts.find(params[:cart_id])
-    else
-      @cart = Cart.find_by(user: nil, session_id: cart_session_id)
-      raise ActiveRecord::RecordNotFound if @cart.nil?
-    end
-  end
+
 end
+
