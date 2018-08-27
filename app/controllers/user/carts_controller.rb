@@ -12,8 +12,8 @@ class User::CartsController < ApplicationController
 
   def update
     @cart = Cart.find(params[:id])
-    @carts.update
-    redirect_to new_user_order_path
+    @cart.update(cart_params)
+    redirect_to user_carts_path
   end
 
   def destroy
@@ -22,7 +22,13 @@ class User::CartsController < ApplicationController
     redirect_to action: :index
   end
 
+
   private
+
+  def cart_params
+      params.require(:cart).permit(:id, :quantity)
+  end
+
 
 
   def cart_session_id
@@ -34,3 +40,4 @@ class User::CartsController < ApplicationController
 
 
 end
+
