@@ -8,11 +8,11 @@
     <div class="col-md-4">
 
             <h3 class="border-botom"><%= @item.title %></h3>
-            <p><%= link_to @item.artist.name, user_artist_path(@item.artist_id) %></p>
-            <h4><span class="label label-default"><%= @item.genre.name %></span></h1>
+            <p>アーティスト名｜<%= link_to @item.artist.name, user_artist_path(@item.artist_id) %></p>
+            <p>ジャンル｜<span class="label label-default"><%= @item.genre.name %></span></p>
             <p>発売日｜<%= @item.release_date %></p>
-            <h4>レーベル名</h4>
-            <p><%= @item.label.name %></p>
+            <p>レーベル名｜<%= @item.label.name %></p>
+            <p>在庫状況｜<%= @item.status %></p>
 
     </div>
 
@@ -20,7 +20,7 @@
       <dl>
         <dt>値段(税込)</dt>
         <dd>
-          <span class="pricefont">¥<%= @item.price %></span><%= @item.status %>
+          <span class="pricefont">¥<%= @item.price %></span>
         </dd>
       </dl>
       <%= link_to user_carts_path(item_id: @item.id), method: :post,class: "btn btn-danger btn-block glyphicon glyphicon-shopping-cart" do %>カートに入れる<% end %>

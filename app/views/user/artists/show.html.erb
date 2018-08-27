@@ -1,15 +1,13 @@
 <!-- アーティスト賞 -->
-
-<div class="toriaezu">
-
 		 <h4>
 		     アーティスト詳細
 		 </h4>
-			    <p><%= @artist.name %></p>
+			    <p class="artistname"><%= @artist.name %></p>
 			    	<h4>プロフィール</h4>
 			    	<p><%= @artist.description %></p>
-			    	<p><%= link_to "アーティスト一覧へ", user_artists_path %></p>
-			    	<h4>ディスコグラフィ</h4>
+			    	<p><%= link_to "すべてのアーティスト", user_artists_path, class: "button" %></p>
+
+			    	<h4 class="page-header">ディスコグラフィ</h4>
 
 <div class="row">
 		  <% @artist.items.each do |item| %>
@@ -20,7 +18,7 @@
 					<P>シングル</P>
 					<p>発売日 | </p>
 					<p>価格 | ¥<%= item.price %></p>
-					<p>
+					<p>在庫状況｜<%=item.status %></p>
 					<%= link_to user_carts_path(item_id: item.id), method: :post,class: "btn btn-danger glyphicon glyphicon-shopping-cart btn-xs" do %>カートに追加する
 					<% end %>
 					</p>
@@ -29,6 +27,5 @@
 
           </div>
 </div>
-
- <% end %>
+<% end %>
 
