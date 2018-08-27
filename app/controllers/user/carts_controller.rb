@@ -1,26 +1,13 @@
 class User::CartsController < ApplicationController
-  
+
   before_action :find_cart, only: [:update, :destroy]
 
   def index
     @carts = current_user.carts
-
-    @price = 0
-
-    @carts.each do |carts|
-    @price += carts.item.price*carts.quantity
-      end
   end
 
   def create
     Cart.add_item(params[:item_id], current_user)
-    redirect_to user_carts_path(current_user)
-  end
-
-  def update_item
-    @carts = current_user.carts
-    update_item = 0
-    @cart.update_item(quantity: params[:quantity].to_i)
     redirect_to user_carts_path(current_user)
   end
 

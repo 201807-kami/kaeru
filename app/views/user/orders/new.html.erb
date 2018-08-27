@@ -3,6 +3,8 @@
       <div class="col-lg-9">
         <%= form_for @order, url: user_orders_path do |f| %>
         <div class="field">
+          <%= f.label :配送先住所 %>
+          <%= f.text_area :adress, class:"order_adress" %></p>
 
         </div>
 
@@ -14,9 +16,9 @@
           <table>
             <thead>
               <tr>
-                <th>商品名</th>
-                <th>値段</th>
-                <th>数量</th>
+                <th class="text-right" style="width: 5%">商品名</th>
+                <th style="width:10%}">値段</th>
+                <th style="width:10%}">数量</th>
               </tr>
             </thead>
               <tbody>
@@ -24,7 +26,7 @@
                   <tr>
                     <td><%= order_item.item.title %></td>
                     <td><%= order_item.item.price %></td>
-                    <td><%= order_item.quantity %></td>
+                    <td><%= order_item.cart.quantity %></td>
                   </tr>
                 <% end %>
               </tbody>
@@ -32,9 +34,7 @@
           </table>
 
           <h3>小計</h3>
-          <%= @order.item_amount %>
-
-            
+          <font size="5"><%= @order.item_amount %></font>
 
 
         <div class="actions">
