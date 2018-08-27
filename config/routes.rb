@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 		resources :genres
 		resources :users, only: [:index, :show, :edit, :update]
 		resources :recommended_items
+		resources :orders 
 	end
 
     root to: 'user/users#top'
