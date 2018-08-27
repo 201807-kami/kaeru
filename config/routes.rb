@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 		resources :genres, only: [:index, :show]
 		resources :favorites, only: [:index, :destroy]
 		resources :carts, only: [:index, :new, :create, :show, :update, :destroy]
+		resources :order_items, only: [:index]
 		resources :orders, only: [:create, :new] do
 		get :complete
 		end
