@@ -10,27 +10,30 @@
 </div>
 
 <% @items.each do |item| %>
-<table class="table table-bordered table-sm table-hover">
-	<caption></caption>
-	<thead>
-		<tr>
-			<th class="text-center">image</th>
-			<th colspan="2">title</th>
-		</tr>
-	</thead>
+<table class="table">
 	<tbody>
 		<tr>
-			<td width="60"><%= attachment_image_tag item, :item_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg", size:"100x100" %></td>
-			<td><h4><%= item.title %></h4>
-				<p>¥<%= item.price %>(税抜)</p>
-				<p>アーティスト名</p>
+			<td width="200">
+				<%= attachment_image_tag item, :item_image, :fill, 120, 120, format: 'jpeg', class: "profile-img center-block " %>
 			</td>
+			<td>
+		   	  <h4><%= item.title %></h4>
+			  <p>価格｜¥<%= item.price %></p>
+			  <p>アーティスト名｜<%= item.artist.name %>
+			  <P>在庫状況｜<%= item.status %>
+			</td>
+			<td>
+		    <td width="200px">
+			  <p>
+			   <%= link_to user_carts_path(item_id: item.id), method: :post, class: "btn btn-danger glyphicon glyphicon-shopping-cart btn-xs btn-block" do %>カートに追加する
+			   <% end %>
+			   </p>
+			   <p>
+                <%= link_to "お気に入り", add_item_path(item), method: :post, class: "btn-group btn-group-xs btn btn-default btn-xs btn-block glyphicon glyphicon-heart" %>
+			   </p>
+		    </td>
 		</tr>
 	</tbody>
 </table>
 
 <% end %>
-
-<p><%= link_to "ジャンル一覧ページへ", user_genres_path %><p>
-
-</p>

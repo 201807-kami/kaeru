@@ -70,14 +70,14 @@
         <div class="col-md-2">
             <!-- 囲ってるパネル -->
             <div class="panel panel-default">
-                <div class="panel-heading text-center">
-                    ジャンル別
+                <div class="panel-heading">
+                    genre
                 </div>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href=""><i class="glyphicon glyphicon-pencil"></i>j-pop</a></li>
-                    <li><a href=""><i class="glyphicon glyphicon-download">洋楽</i></a></li>
-                    <li><a href=""><i class="glyphicon glyphicon-leaf"></i>韓楽</a></li>
-                    <li><a href=""><i class="glyphicon glyphicon-folder-open">ジャズ</i></a></li>
+                    <li><%= link_to 'j-pop', user_genre_path(id:1) %></li>
+                    <li><%= link_to '洋楽', user_genre_path(id:2) %></li>
+                    <li><%= link_to '韓楽', user_genre_path(id:3) %></li>
+                    <li><%= link_to 'ジャズ', user_genre_path(id:4) %></li>
                 </ul>
 
 
