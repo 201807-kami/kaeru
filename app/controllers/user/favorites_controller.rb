@@ -13,14 +13,14 @@ class User::FavoritesController < ApplicationController
 	    @favorite = Favorite.new(item_id: @item_id, user_id: current_user.id)
 	    @favorite.save
 	      #保存に成功した場合、一覧画面に戻る
-	    redirect_to root_path
+	    redirect_to user_favorites_path
     end
 
     #お気に入り削除用アクション
     def destroy
         favorite = Favorite.find(params[:id])
 	    favorite.destroy
-	    redirect_to user_items_path
+	    redirect_to root_path
     end
 
 

@@ -4,6 +4,8 @@ class User::ItemsController < ApplicationController
 	end
 	def show
 	  @item = Item.find(params[:id])
+	  @disc = Disc.find(params[:id])
+	  @song = Song.find(params[:id])
 	end
 
 	private
