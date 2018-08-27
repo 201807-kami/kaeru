@@ -1,15 +1,9 @@
 
+<div class="page-header">
 
+  <h4>商品ページ</h4>
 
-<%= link_to "トップページへ", root_path %>
-
-<%= link_to "ジャンル一覧へ", user_genres_path %>
-
-
-<table class="table table-bordered">
-	<td>商品一覧</td>
-	<td><%= link_to "アーティスト一覧", user_artists_path %></td>
-
+</div>
 	  <table class="table table-bordered table-sm table-hover">
 	  	<thead>
 	  		<th>商品写真</th>
@@ -32,9 +26,9 @@
 	          <td><%= item.artist.name %></td>
 	          <td><%= item.genre.name %></td>
 	          <td><%= item.label.name %></td>
-	           <td><%= link_to "詳細", user_item_path(item.id)%></td>
-	           <td><%= link_to "お気に入り", add_item_path(item), method: :post %></td>
-	           <td>カートに入れる</td>
+	           <td><%= link_to "詳細", user_item_path(item.id), class: "btn-group btn-group-xs btn btn-default btn-block glyphicon glyphicon-file" %></td>
+	           <td><%= link_to "お気に入り", add_item_path(item), method: :post, class: "btn-group btn-group-xs btn btn-default btn-block glyphicon glyphicon-heart" %></td>
+	           <td><%= link_to user_carts_path(item_id: item.id), method: :post,class: "btn btn-danger btn-block glyphicon glyphicon-shopping-cart" do %>カートに入れる<% end %></td>
 	        </tr>
 	      <% end %>
 	    </tbody>
