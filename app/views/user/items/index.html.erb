@@ -3,37 +3,33 @@
 
   <h4>商品ページ</h4>
 
-</div>
-	  <table class="table table-bordered table-sm table-hover">
-	  	<thead>
-	  		<th>商品写真</th>
-	  		<th>商品名</th>
-	  		<th>値段</th>
-	  		<th>アーティスト</th>
-	  		<th>ジャンル名</th>
-	  		<th>レーベル名</th>
-	  		<th>商品詳細</th>
-	  		<th>お気に入りに追加</th>
-	  		<th>カートに追加</th>
-	  	</thead>
-
-	    <tbody class="itemtablebody">
-	      <% @items.each do |item| %>
-	        <tr>
-	          <td><%= attachment_image_tag item, :item_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg", size:"100x100" %></td>
-	          <td><%= item.title %></td>
-	          <td>¥<%= item.price %></td>
-	          <td><%= item.artist.name %></td>
-	          <td><%= item.genre.name %></td>
-	          <td><%= item.label.name %></td>
-	           <td><%= link_to "詳細", user_item_path(item.id), class: "btn-group btn-group-xs btn btn-default btn-block glyphicon glyphicon-file" %></td>
-	           <td><%= link_to "お気に入り", add_item_path(item), method: :post, class: "btn-group btn-group-xs btn btn-default btn-block glyphicon glyphicon-heart" %></td>
-	           <td><%= link_to user_carts_path(item_id: item.id), method: :post,class: "btn btn-danger btn-block glyphicon glyphicon-shopping-cart" do %>カートに入れる<% end %></td>
-	        </tr>
-	      <% end %>
-	    </tbody>
-	  </table>
-
+　　<% @items.each do |item| %>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td width="200px">
+					<%= attachment_image_tag item, :item_image, :fill, 100, 100, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg", size:"100x100" %>
+					</td>
+					<td>
+						<h4><%= item.title %></h4>
+						<p>価格｜¥<%= item.price %></p>
+						<p>アーティスト名｜<%= item.artist.name %></p>
+						<P>在庫状況｜<%= item.status %>
+					</td>
+					<td width="200px">
+					<p><%= link_to "詳細", user_item_path(item.id), class: "btn-group btn-group-xs btn btn-default btn-block glyphicon glyphicon-file btn-xs" %></p>
+					 <p>
+					 	<%= link_to "お気に入り", add_item_path(item), method: :post, class: "btn-group btn-group-xs btn btn-default btn-block glyphicon glyphicon-heart btn-xs" %>
+					</p>
+					<p>
+					  <%= link_to user_carts_path(item_id: item.id), method: :post, class: "btn btn-danger glyphicon glyphicon-shopping-cart btn-xs btn-block" do %>カートに追加する
+					   <% end %>
+				    </p>
+				    </td>
+				</tr>
+			</tbody>
+		</table>
+  <% end %>
 
 </div>
 

@@ -1,4 +1,3 @@
-<%= link_to "ジャンル一覧へ", user_genres_path %>
 
 <% @artist.each do |artist| %>
 
@@ -21,3 +20,6 @@
 
 <% end %>
 
+<p class="text-right">
+<%= link_to "すべてのアーティストを表示", user_artists_path, class: "btn btn-default btn-sm" %>
+</p>

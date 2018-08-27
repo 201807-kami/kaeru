@@ -17,7 +17,7 @@
 				<%= attachment_image_tag item, :item_image, :fill, 120, 120, format: 'jpeg', class: "profile-img center-block " %>
 			</td>
 			<td>
-		   	  <h4><%= item.title %></h4>
+		   	  <h4><%= link_to item.title, user_item_path(item.id) %></h4>
 			  <p>価格｜¥<%= item.price %></p>
 			  <p>アーティスト名｜<%= item.artist.name %>
 			  <P>在庫状況｜<%= item.status %>
