@@ -34,8 +34,6 @@ Rails.application.routes.draw do
 			resources :cart_items, only: [:create, :update, :destroy]
 		end
 		# get '/carts/:id' => 'carts#create', as: 'cart'
-		get '/cart_page' => 'carts#page' ,as: 'cart_page'
-		post'/update_item' => 'carts#update_item' ,as: 'cart_update_item'
 
 		resources :artists, only: [:index, :show]
 		resources :genres, only: [:index, :show]
