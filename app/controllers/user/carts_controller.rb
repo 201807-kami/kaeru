@@ -1,5 +1,7 @@
 class User::CartsController < ApplicationController
 
+  layout 'user'
+  
   def index
     @carts = current_user.carts
   end

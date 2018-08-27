@@ -1,24 +1,40 @@
 
-  <p>あなたのお気に入り一覧</p>
+<div class="page-header">
 
-  <% @favorite.each do |favorite| %>
-  <% item = Item.find(favorite.item_id) %>
+  <h4>あなたのお気に入り一覧</h4>
 
-  		<table>
-			  <tr>
-				<td>商品id</td>
-			    <td>title</td>
-			    <td>price</td>
-			    <td>発売日</td>
-			  </tr>
-			  <tr>
-				 <td><%= item.id %></td>
-			     <td><%= item.title %></td>
-			     <td><%= item.price %></td>
-			     <td><%= item.release_date %></td>
-			     <td><%= link_to "削除", user_favorite_path(favorite), method: :delete %></td>
-			  </tr>
+</div>
+
+
+
+	  <% @favorite.each do |favorite| %>
+	  <% item = Item.find(favorite.item_id) %>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<td width="200px">
+					<%= attachment_image_tag item, :item_image, :fill, 120, 120, format: 'jpeg', class: "profile-img center-block " %>
+					</td>
+					<td>
+						<h4><%= link_to item.title, user_item_path(item.id) %></h4>
+						<p>価格｜¥<%= item.price %></p>
+						<p>アーティスト名｜<%= item.artist.name %>
+						<P>在庫状況｜<%= item.status %>
+					</td>
+					<td width="200px">
+					 <p>
+					   <%= link_to user_carts_path(item_id: item.id), method: :post, class: "btn btn-danger glyphicon glyphicon-shopping-cart btn-xs btn-block" do %>カートに追加する
+					   <% end %>
+					</p>
+					<p>
+					  <%= link_to "削除", user_favorite_path(favorite), method: :delete, class: "btn-grou btn btn-default glyphicon glyphicon-trash btn-xs btn-block" %>
+				    </p>
+				    </td>
+				</tr>
+			</tbody>
 		</table>
+
 
 
   <% end %>

@@ -38,6 +38,7 @@ class Order < ApplicationRecord
     set_current_item_info
     set_sales_quantity
     set_stock
+    self.ordered_date = Date.current
     self.save!
 
     cart_clear

@@ -1,9 +1,12 @@
 class User::ItemsController < ApplicationController
+	layout 'user'
 	def index
       @items = Item.search(params[:search])
 	end
 	def show
 	  @item = Item.find(params[:id])
+	  @disc = Disc.find(params[:id])
+	  @song = Song.find(params[:id])
 	end
 
 	private

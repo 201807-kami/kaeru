@@ -1,6 +1,5 @@
 class Admin::ItemsController < ApplicationController
 	layout 'admin'
-
 	include ItemsHelper
 	
 	def index

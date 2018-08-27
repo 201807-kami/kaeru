@@ -29,7 +29,8 @@
 	        		<td><%= f.submit "数量更新" %></td>
 	        	  <% end %>
 
-	       	<td><%= cart.item.price * cart.quantity %>円</td>
+
+	       	<td><%= cart.item.price * cart.quantity %>円</td>	       	
 	        <td><%= link_to "削除", user_cart_path(cart), method: :delete %></td>
 	      </tr>
 	    <% end %>
