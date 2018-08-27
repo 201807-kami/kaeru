@@ -1,5 +1,5 @@
 class User::UsersController < ApplicationController
-	
+	layout 'user'
 	def top
         @items = Item.where(recommended: "1")
 	end

@@ -1,4 +1,5 @@
 class User::GenresController < ApplicationController
+	layout 'user'
 	def index
 	end
 	def show

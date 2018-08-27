@@ -1,5 +1,5 @@
 class User::FavoritesController < ApplicationController
-
+  layout 'user'
 	def index
     @user = current_user
     @favorite = Favorite.where(user_id: @user.id).all

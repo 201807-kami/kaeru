@@ -1,4 +1,5 @@
 class User::ItemsController < ApplicationController
+	layout 'user'
 	def index
       @items = Item.search(params[:search])
 	end

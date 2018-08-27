@@ -1,4 +1,5 @@
 class User::OrdersController < ApplicationController
+  layout 'user'
  
   def new
     @order = current_user.orders.build
