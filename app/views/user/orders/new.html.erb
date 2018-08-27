@@ -3,7 +3,8 @@
       <div class="col-lg-9">
         <%= form_for @order, url: user_orders_path do |f| %>
         <div class="field">
-          <%= f.label :配送先住所 %>
+          <%= f.label :新しい配送先住所 %>
+           <%= f.select(:adress_method, [['選択して下さい', ''],['新規登録時の住所を使う', '新規登録時の住所を使う'],['新しい配送先住所を使う','新しい配送先住所を使う']]) %>
           <%= f.text_area :adress, class:"order_adress" %></p>
 
         </div>

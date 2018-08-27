@@ -6,7 +6,7 @@
 
 	<p><font size="5">合計 <%= Cart.current_quantity(current_user) %>点 :<%= Cart.current_amount(current_user) %>円</font></p>
 
-	<%= link_to user_update_path, method: :post,class: "btn btn-danger btn-lg btn-block" do %>レジに進む<% end %>
+	<%= link_to user_update_path(@carts, cart_id: params[:id]), method: :post,class: "btn btn-danger btn-lg btn-block" do %>レジに進む<% end %>
 
 	<table class="table table-bordered table-sm table-hover">
 	  <thead>
@@ -28,7 +28,7 @@
 	        	  <%= f.select :quantity, options_for_select(1..10, selected: cart.quantity)%>
 	        	  <% end %>
 	       	<td><%= cart.item.price %>円</td>
-	        <td><%= link_to "削除", user_cart_path(cart), method: :delete %></td>
+	        <td><%= link_to "削除", user_cart_path(cart, cart_id: params[:id]), method: :delete %></td>
 	      </tr>
 	    <% end %>
 	  </tbody>

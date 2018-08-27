@@ -1,6 +1,5 @@
 class User::CartsController < ApplicationController
 
-  before_action :find_cart, only: [:update, :destroy]
 
   def index
     @carts = current_user.carts
@@ -12,13 +11,14 @@ class User::CartsController < ApplicationController
   end
 
   def update
-    @carts = current_user.carts
+    @cart = Cart.find(params[:id])
     @carts.update
     redirect_to new_user_order_path
   end
 
   def destroy
-    @cart.destroy!
+    @cart = Cart.find(params[:id])
+    @cart.destroy
     redirect_to action: :index
   end
 
@@ -32,12 +32,5 @@ class User::CartsController < ApplicationController
     session[:cart_session_id]
   end
 
-  def find_cart
-    if user_signed_in?
-      @cart = current_user.carts.find(params[:cart_id])
-    else
-      @cart = Cart.find_by(user: nil, session_id: cart_session_id)
-      raise ActiveRecord::RecordNotFound if @cart.nil?
-    end
-  end
+
 end
