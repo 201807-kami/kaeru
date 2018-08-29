@@ -13,7 +13,7 @@
 		  <div class="col-sm-3 col-xl-3 md-3">
 					<%= attachment_image_tag item, :item_image, :fill, 130, 130, format: 'jpeg', class: "profile-img center-block" %>
 					<div>
-					<h4><%= link_to item.title, user_item_path(item.id) %></h4>
+					<p><%= link_to item.title, user_item_path(item.id) %></p>
 					<p>価格 | ¥<%= item.price %></p>
 					<p>在庫状況｜<%=item.status %></p>
 					<%= link_to user_carts_path(item_id: item.id), method: :post,class: "btn btn-danger glyphicon glyphicon-shopping-cart btn-xs" do %>カートに追加する
