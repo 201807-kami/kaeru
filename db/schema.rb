@@ -55,12 +55,17 @@ ActiveRecord::Schema.define(version: 2018_08_27_081620) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 1
+    t.integer "cart_item_id"
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cart_item"
+    t.integer "cart_item_id"
     t.integer "item_id"
     t.integer "quantity", default: 0
   end
@@ -137,13 +142,6 @@ ActiveRecord::Schema.define(version: 2018_08_27_081620) do
     t.integer "user_id"
     t.integer "item_amount"
     t.date "ordered_date"
-
-  create_table "recommended_items", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "place_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "songs", force: :cascade do |t|
     t.string "name"
