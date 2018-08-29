@@ -3,12 +3,21 @@ class User::CartsController < ApplicationController
   layout 'user'
 
   def index
+    if user_signed_in?
     @carts = current_user.carts
+    else
+    redirect_to new_user_session_path
+    end
+
   end
 
   def create
+    if user_signed_in?
     Cart.add_item(params[:item_id], current_user)
     redirect_to user_carts_path(current_user)
+    else
+    redirect_to new_user_session_path
+    end
   end
 
   def update
