@@ -6,6 +6,7 @@ class Item < ApplicationRecord
 
 	has_many :cart_items
 	has_many :carts
+	has_one :recommended_items
 
 
 
