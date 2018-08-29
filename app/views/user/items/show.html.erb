@@ -10,7 +10,6 @@
             <h3 class="border-botom"><%= @item.title %></h3>
             <p>アーティスト名｜<%= link_to @item.artist.name, user_artist_path(@item.artist_id) %></p>
             <p>ジャンル｜<span class="label label-default"><%= @item.genre.name %></span></p>
-            <p>発売日｜<%= @item.release_date %></p>
             <p>レーベル名｜<%= @item.label.name %></p>
             <p>在庫状況｜<%= @item.status %></p>
 
