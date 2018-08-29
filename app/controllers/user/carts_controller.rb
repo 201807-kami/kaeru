@@ -1,7 +1,7 @@
 class User::CartsController < ApplicationController
 
   layout 'user'
-  
+
   def index
     if user_signed_in?
     @carts = current_user.carts
@@ -50,4 +50,7 @@ class User::CartsController < ApplicationController
 
 
 end
+
+
+
 
