@@ -1,8 +1,27 @@
+<h1>注文完了</h1>
 
-<h1>ご注文内容</h1>
-<p>住所 <%= f.text_area :adress, class:"order_adress" %></p>
-<p> 支払い方法 <%= f.text_area :payment, class:"order_payment" %></p>
-<p> お届け予定日 <%= f.text_area :delivery_date, class:"order_delivery_date" %></p>
-<p> 合計金額 <%= f.text_area :total_price, class:"order_total_price" %></p>
-<p><%= link_to "ショッピングを続ける", user_top_path(book) %></p>
+<h4><font size="5">ご注文ありがとうございました!!!!!</font></h4>
 
+
+ <h2> 注文内容</h2>
+  <table class="table table-bordered table-sm table-hove">
+    <h3>※変更先がある場合はそちらに配送されます</h3>
+            <thead>
+              <tr class="table-secondary">
+                <th style="width:10%}">登録住所</th>
+                <th style="width:10%}">変更先住所</th>
+                <th style="width:10%}">支払方法</th>
+              </tr>
+            </thead>
+              <tbody>
+                  <tr>
+                    <td><%= @order_new.user.address %></td>
+                    <td><%= @order_new.address %></td>
+                    <td><%= @order_new.payment_method %></td>
+                  </tr>
+              </tbody>
+            </thead>
+  </table>
+
+
+  <%= link_to "shoppingを続ける", user_items_path %>

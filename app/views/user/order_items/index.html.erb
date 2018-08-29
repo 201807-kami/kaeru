@@ -1,30 +1,33 @@
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+<h1>購入履歴</h1>
+<table class="table table-bordered table-sm small table-hover">
+				<thead>
+					<tr class="ex_table">
+						<th>購入日</th>
+						<th>購入価格総計</th>
+						<th>商品名</th>
+						<th>アーティスト名</th>
+						<th>商品価格</th>
+						<th>購入枚数</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @orders.each do |order| %>
+					<tr>
+					    <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+					    <td>￥<%= order.item_amount %></td>
+					    <td colspan="4"></td>
+					</tr>
+					<% order.order_items.each_with_index do |order_item| %>
+					  <tr>
+					  	<td colspan="2"></td>
+					    <td><%= order_item.item.title %></td>
+					    <td><%= order_item.item.artist.name %></td>
+						<td>￥<%= order_item.item.price %></td>
+						<td><%= order_item.quantity %></td>
+					  </tr>
+					<% end %>
+					</tr>
+					<% end %>
+				</tbody>
+</table>

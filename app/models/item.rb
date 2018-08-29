@@ -24,4 +24,17 @@ class Item < ApplicationRecord
 	    end
     end
 
+  #   def self.top5
+  #   ranking = Item.all.sort_by do |item|
+  #     item.rank
+  #   end
+
+  #   ranking = ranking.keep_if do |item|
+  #     item.rank <= 5
+  #   end
+
+  #   return ranking
+  # end
+
+
 end
