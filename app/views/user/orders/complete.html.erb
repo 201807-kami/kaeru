@@ -1,3 +1,25 @@
 <h1>注文完了</h1>
 
-<%= link_to "shoppingを続ける", user_items_path %>
+<h4><font size="5">ご注文ありがとうございました!!!!!</font></h4>
+
+
+ <h2> 注文内容</h2>
+  <table class="table table-bordered table-sm table-hove">
+  	<h3>※変更先がある場合はそちらに配送されます</h3>
+            <thead>
+              <tr class="table-secondary">
+              	<th style="width:10%}">住所</th>
+              	<th style="width:10%}">支払方法</th>
+              </tr>
+            </thead>
+              <tbody>
+                  <tr>
+                  	<td><%= @order_new.address %></td>
+                  	<td><%= @order_new.payment_method %></td>
+                  </tr>
+              </tbody>
+            </thead>
+  </table>
+
+
+  <%= link_to "shoppingを続ける", user_items_path %>

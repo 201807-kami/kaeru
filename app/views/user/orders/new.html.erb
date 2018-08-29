@@ -3,9 +3,12 @@
       <div class="col-lg-9">
         <%= form_for @order, url: user_orders_path do |f| %>
         <div class="field">
-          <%= f.label :別の配送先住所にしたい場合はこちらに記入 %>
-          <%= f.text_area :address, class:"order_adress" %></p>
+        <%= f.label :住所 %>
+        <%= f.select(:address, [['選択して下さい', ''],['登録住所', '登録住所'],['新規住所','新規住所']]) %>
+        <%= f.label :新規で作る場合 %>
+        <%= f.text_area :address, class:"order_adress" %>
         </div>
+
 
         <div class="field">
         <%= f.label :お支払い方法 %>
@@ -15,7 +18,7 @@
           <table class="table table-bordered table-sm table-hove
             <thead>
               <tr class="table-secondary">
-                <th class="text-right" style="width: 5%">商品名</th>
+                <th class="text-right" style="width: 10%">商品名</th>
                 <th style="width:10%}">値段</th>
                 <th style="width:10%}">数量</th>
               </tr>
@@ -29,7 +32,6 @@
                   </tr>
                 <% end %>
               </tbody>
-            </thead>
           </table>
 
           <h3>小計</h3>
@@ -42,6 +44,5 @@
       </div>
    </div>
 </div>
-
 
 
