@@ -2,11 +2,15 @@
      <div class="row">
       <div class="col-lg-9">
         <%= form_for @order, url: user_orders_path do |f| %>
+
         <div class="field">
-        <%= f.label :住所 %>
-        <%= f.select(:address, [['選択して下さい', ''],['登録住所', '登録住所'],['新規住所','新規住所']]) %>
-        <%= f.label :新規で作る場合 %>
-        <%= f.text_area :address, class:"order_adress" %>
+         <font size="5"><%= f.label :現在配送先となってる登録住所 %></font>
+         <font size="5"><%= @order.user.address %></font>
+        </div>
+
+        <div>
+          <%= f.label :配送先を変えたい方はこちらに入力してください %>
+          <%= f.text_area :address, class:"order_adress" %>
         </div>
 
 
@@ -18,7 +22,7 @@
           <table class="table table-bordered table-sm table-hove
             <thead>
               <tr class="table-secondary">
-                <th class="text-right" style="width: 10%">商品名</th>
+                <th style="width:10%}">商品名</th>
                 <th style="width:10%}">値段</th>
                 <th style="width:10%}">数量</th>
               </tr>
