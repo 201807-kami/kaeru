@@ -57,20 +57,6 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-3">
-    <div class="card">
-        <h6 class="card-header bg-info">
-        <i class="fa fa-cubes"></i>
-        販売アイテム
-        </h6>
-      <div class="card-body text-center">
-        <p class="m-0 lead">
-          <%= @selling_item_counts %>
-          <span class="small text-muted"> 種類</span>
-        </p>
-      </div>
-    </div>
-  </div>
   <div class="col-8">
     <div class="card">
       <%= link_to admin_items_path(search: {stock: 5, stock_type: :less, statuses: ['selling']}) do %>

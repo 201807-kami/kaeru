@@ -54,7 +54,7 @@
 	          </div>
 	        </div>
 
-	        <div class="col-3 text-right">
+	        <div class="col-2 text-right">
 	          <div class="btn-group">
 	            <%= f.submit '検索', class: 'btn btn-primary' %>
 	            <button aria-expanded = 'true' aria-haspopup = 'true' class="btn btn-primary dropdown-toggle" data-toggle='dropdown'   >
@@ -91,7 +91,7 @@
 	          <td><%= attachment_image_tag item, :item_image, :fill, 100, 100 %></td>
 	          <td><%= item.title %></td>
 	          <td><%= item.status %></td>
-	          <td class="text-right"><%= item.price %></td>
+	          <td class="text-right"><%= item.price %>円</td>
 	          <td class="text-right"><%= item.stock %></td>
 	          <td>
 	            <%= link_to '編集', edit_admin_item_path(item) %>
