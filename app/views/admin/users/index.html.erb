@@ -8,23 +8,12 @@
         <div class="form-group row">
           <%= f.label :email, 'メールアドレス', class: 'col-xs-3 col-form-label pr-0' %>
           <div class="col-xs-4">
-            <%= f.text_field :email, class: 'form-control', placeholder: 'あいまい検索' %>
+            <%= f.text_field :email, class: 'form-control' %>
           </div>
         </div>
-<%
-=begin
-%>          
-          <%= f.label :account_name, 'アカウント名', class: 'col-2 col-form-label pr-0 text-right' %>
-          </div>
-          <div class="col-4">
-            <%= f.text_field :name, class: 'form-control', placeholder: 'あいまい検索' %>
-          </div>
-<%
-=end
-%>
-        
+
         <div class="form-group row">
-          <%= f.label :created_at_from, '登録日', class: 'col-2 col-form-label pr-0' %>
+          <%= f.label :created_at_from, '登録日', class: 'col-1 col-form-label pr-0' %>
           <div class="col-6">
             <div class="form-inline">
               <%= f.date_field :created_at_from, class: 'form-control', value: @search_form.created_at_from %>
@@ -33,22 +22,22 @@
               </span>
             </div>
           </div>
-<%
-=begin
-%>          
-          <div class="col-2">
+ 
+          <div class="col-3">
             <div class="form-check">
               <label class="form-check-label">
-                <%= f.check_box "退会者も含む", :leaved, class: 'form-check-input' %>
+                <%= f.check_box :leaved, class: 'form-check-input' %>
+                退会者の含む
               </label>
             </div>
-<%
-=end
-%>
+          </div>
+
           <div class="col-xs-2">
             <%= f.submit '検 索', class: 'btn btn-primary btn-block' %>
           </div>
+        </div>
       <% end %>
+
       <table class='table table-bordered table-sm'>
         <thead>
           <tr class='table-secondary'>

@@ -18,7 +18,7 @@ module ItemsHelper
 
     # ボタンの設置。classを指定してJavascriptと連動、fields を渡しておいて、
     # ボタン押下時にこの要素(fields)をJavascript側で増やすようにする
-    link_to(name, '#', class: "add_field", data: {id: id, fields: fields.gsub("\n","")})
+    link_to(name, '#', class: "add_field btn btn-success btn-sm", data: {id: id, fields: fields.gsub("\n","")})
 
     # Rails3系だと下記のように書けるが、4系で link_to_function は葬られた
     #link_to_function(name, raw("add_field(this, \"#{association}\", \"#{escape_javascript(fields)}\")"), options)
@@ -27,6 +27,6 @@ module ItemsHelper
   #削除ボタン
   def link_to_remove_field(name, f, options={})
     # _destroy の hiddenフィールドと削除ボタンを設置
-    f.hidden_field(:_destroy) + link_to(name, '#', class: "remove_field")
+    f.hidden_field(:_destroy) + link_to(name, '#', class: "remove_field btn btn-danger btn-sm float-right")
   end
 end

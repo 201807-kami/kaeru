@@ -7,7 +7,9 @@
         <th class="table-secondary">購入日時</th>
         <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
         <th class="table-secondary">購入者</th>
-        <td><%= link_to admin_user_path(@order.user) do %><%= @order.user.last_name %><%= @order.user.first_name %><% end %></td>
+        <td><%= link_to admin_user_path(@order.user) do %>
+          <%= @order.user.last_name %><%= @order.user.first_name %>
+          <% end %></td>
       </tr>
     </table>
   </div>
@@ -35,14 +37,17 @@
           <table class="table">
             <tr>
               <th> ID</th>
-              <th> 商品名</th>
+              <th colspan=2 > 商品名</th>
               <th> 数量</th>
+              <th> 価格</th>
             </tr>
             <% @order.order_items.each do |order_item| %>
               <tr>
                 <td><%= order_item.item.id %></td>
-                <td><<%= order_item.item.title %></td>
+                <td><%= attachment_image_tag order_item.item, :item_image, :fill, 100, 100 %></td>
+                <td><%= order_item.item.title %></td>
                 <td><%= order_item.quantity %></td>
+                <td><%= order_item.price %>円</td>
               </tr>
             <% end %>
           </table>

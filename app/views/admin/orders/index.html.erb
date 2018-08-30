@@ -28,7 +28,7 @@
 						</label>
 					</div>
 				</div>
-				<div class="col-2">
+				<div class="col-10">
 					<%= f.submit '検 索', class: 'btn btn-primary btn-block' %>
 				</div>
 			</div>
@@ -38,8 +38,8 @@
 					<tr class="table-secondary">
 						<th>#</th>
 						<th>購入日</th>
-						<th>メールアドレス</th>
-						<th>購入価格</th>
+						<th>購入者(メールアドレス)</th>
+						<th>購入価格総計</th>
 						<th>商品(数量)</th>
 						<th>配送</th>
 						<th></th>
@@ -51,7 +51,7 @@
 							<td><%= order.id %></td>
 							<td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
 							<td><%= order.user.email if order.user.present? %></td>
-							<td><%= order.item_amount %></td>
+							<td><%= order.item_amount %>円</td>
 							<td><% order.order_items.each_with_index do |order_item| %>
 	                <%= order_item.item.title %>: <%= order_item.quantity %></td>
 	                <br>

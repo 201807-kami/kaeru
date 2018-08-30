@@ -1,6 +1,6 @@
-<div class ="field">
-  <%= f.label :disc_number %><br>
-  <%= f.text_field :disc_number %>
+<div class ="disc clearfix">
+  <strong><%= f.label :ディスク番号  %></strong>
+  <%= f.number_field :disc_number, class: 'form-control col-1 disc-box' %>
   <%= f.hidden_field :id %>
   <%= f.fields_for :songs do |sf| %>
   	<%= render partial: "song_form", locals: {f: sf } %>
