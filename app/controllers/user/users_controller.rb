@@ -1,7 +1,10 @@
 class User::UsersController < ApplicationController
 	layout 'user'
+
+
 	def top
         @items = Item.where(recommended: "1")
+        @rank_items = @items.limit(5).order("sales_quantity DESC")
 	end
 
 	def show
@@ -29,6 +32,5 @@ class User::UsersController < ApplicationController
         render :leave
         end
     end
-
 
 end
