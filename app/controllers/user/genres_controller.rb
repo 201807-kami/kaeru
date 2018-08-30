@@ -4,6 +4,6 @@ class User::GenresController < ApplicationController
 	end
 	def show
       @genre = Genre.find(params[:id])
-      @items = Item.where(genre_id: params[:id])
+      @items = Item.where(recommended: params[:id])
 	end
 end
