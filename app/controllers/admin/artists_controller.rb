@@ -1,5 +1,4 @@
-class Admin::ArtistsController < ApplicationController
-	layout 'admin'
+class Admin::ArtistsController < Admin::AdminBase
 
 	def index
 		@search_form = Admin::ArtistSearchForm.new(search_params)

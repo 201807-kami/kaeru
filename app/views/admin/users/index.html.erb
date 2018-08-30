@@ -1,4 +1,4 @@
-<div class="container">
+<% @crumbs = [{title: '会員一覧'}] %>
   <div class='card'>
     <div class='card-header pt-3'>
       <p>会員一覧</p>
@@ -68,13 +68,15 @@
               <td><%= user.first_name %></td>
               <td><%= user.created_at.strftime('%Y/%m/%d %H:%M')%></td>
               <td><%= user.leave_at.nil? ? '存続' : '退会済' %></td>
-              <td><%= link_to "edit", edit_admin_user_path(user.id) %></td>
+              <td><%= link_to "編集", edit_admin_user_path(user.id) %>  / 
+                  <%= link_to '削除', admin_user_path(user), method: :delete, data: {confirm: '削除してよろしいでしょうか？'} %>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
-</div>
+
 
 

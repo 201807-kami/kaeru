@@ -1,10 +1,10 @@
+<% @crumbs = [{title: 'レーベル一覧', path: admin_labels_path}, {title: '新規作成'}] %>
 
 
-<div class="container">
 	<%= form_for @label, url: admin_labels_path do |f| %>
 		<div class="card">
 			<div class="card-header">
-				<h2>レーベル情報</h2>
+				レーベル情報
 			</div>
 			<div class="card-body">
 				<%= render 'form', f: f %>
@@ -16,4 +16,3 @@
 			</div>
 		</div>
 	<% end %>
-</div>

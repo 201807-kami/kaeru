@@ -1,5 +1,4 @@
-class Admin::RecommendedItemsController < ApplicationController
-	layout 'admin'
+class Admin::RecommendedItemsController < Admin::AdminBase
 
 	
 	include ItemsHelper

@@ -1,8 +1,8 @@
-<div class="container">
+<% @crumbs = [{title: 'アーティスト一覧', path: admin_items_path}, {title: 'アーティスト編集'}] %>
 	<%= form_for @artist, url: admin_artist_path(@artist) do |f|%>
 		<div class="card">
 			<div class="card-header">
-				<p>アーティスト編集</p>
+				アーティスト編集
 			</div>
 			<div class="card-body">
 				<%= render 'form', f: f %>
@@ -13,4 +13,3 @@
 			</div>
 		</div>
 	<% end %>
-</div>

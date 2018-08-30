@@ -1,33 +1,51 @@
-<div class="container">
-  <div class="card">
+<% @crumbs = [{title: 'おすすめ商品一覧'}] %>
+
+<div class="card">
+  <div class="card-header pt-3">
+    おすすめ商品一覧
+    
+    <%= link_to new_admin_genre_path, class: 'btn btn-success btn-sm float-right mb-0' do %>
+      <i class="fa fa-plus">
+      ジャンル作成
+      </i>
+    <% end %>
+    <%= link_to new_admin_item_path, class: 'btn btn-success btn-sm float-right mb-0' do %>
+      <i class="fa fa-plus">
+      商品作成
+      </i>
+    <% end %>
+  </div>
+  <div class="card-body">
     <% @genre.each do |genre| %>
-    <div class="card-header pt-3">
-      <%= genre.name %>
-    </div>
-    <div class="card-body">
-      <table class="table table-bordered table-sm table-hover">
-        <thead>
-          <tr class="table-secondary">
-            <th class="text-center" style="width: 8%"}>#</th>
-            <th style="width: 15%">ジャケット画像</th>
-            <th style="width: 55%">商品名</th>
-            <th style="width: 12%"></th>
-            <th style="width: 12%"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @items.where(recommended: genre.id).each do |item| %>
-            <tr>
-              <td class="text-center"><%= item.id %></td>
-              <td class="image_tag"></td>
-              <td><%= item.title %></td>
-              <td><%= link_to '編集', edit_admin_recommended_item_path(item) %></td>
-              <td><%= link_to '削除', admin_recommended_item_path(item), method: :delete %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+      <div class="card">
+          <div class="card-header pt-3">
+            <%= genre.name %>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered table-sm table-hover">
+              <thead>
+                <tr class="table-secondary">
+                  <th class="text-center" style="width: 8%"}>#</th>
+                  <th style="width: 15%">ジャケット画像</th>
+                  <th style="width: 55%">商品名</th>
+                  <th style="width: 12%"></th>
+                  <th style="width: 12%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @items.where(recommended: genre.id).each do |item| %>
+                  <tr>
+                    <td class="text-center"><%= item.id %></td>
+                    <td class="image_tag"></td>
+                    <td><%= item.title %></td>
+                    <td><%= link_to '編集', edit_admin_recommended_item_path(item) %></td>
+                    <td><%= link_to '削除', admin_recommended_item_path(item), method: :delete %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+      </div>
     <% end %>
   </div>
 </div>

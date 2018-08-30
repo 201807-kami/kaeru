@@ -1,4 +1,4 @@
-<div class="container">
+<% @crumbs = [{title: '注文一覧'}] %>
 		
 	<div class="card">
 		<div class="card-header">
@@ -57,11 +57,10 @@
 	                <br>
 	                <% end %>
 							<td><%= order.status %></td>
-							<td><%= link_to '参照', admin_order_path(order) %></td>
+							<td><%= link_to '詳細', admin_order_path(order) %></td>
 						</tr>
 						<% end %>
 				</tbody>
 			</table>
 	</div>
-</div>
 

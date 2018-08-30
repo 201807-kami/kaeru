@@ -1,4 +1,4 @@
-<div class="container">
+<% @crumbs = [{title: 'ジャンル一覧', path: admin_genres_path}, {title: 'ジャンル編集'}] %>
 	<%= form_for @genre, url: admin_genre_path(@genre) do |f|%>
 		<div class="card">
 			<div class="card-header">
@@ -13,4 +13,3 @@
 			</div>
 		</div>
 	<% end %>
-</div>

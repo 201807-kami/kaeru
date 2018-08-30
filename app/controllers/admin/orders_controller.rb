@@ -1,5 +1,5 @@
-class Admin::OrdersController < ApplicationController
-	layout 'admin'
+class Admin::OrdersController < Admin::AdminBase
+
 
 	def index
     @search_form = Admin::OrderSearchForm.new(search_params)

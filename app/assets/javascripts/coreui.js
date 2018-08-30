@@ -26,8 +26,6 @@
 * MAIN NAVIGATION
 */
 
-
-
 $(document).ready(function($){
 
   // Add class .active to current link

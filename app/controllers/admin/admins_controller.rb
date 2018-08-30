@@ -1,5 +1,5 @@
-class Admin::AdminsController < ApplicationController
-  layout 'admin'
+class Admin::AdminsController < Admin::AdminBase
+  
   def index
     @admins = Admin.order(:id)
   end
