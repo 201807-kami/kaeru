@@ -3,13 +3,8 @@
       <div class="col-lg-9">
         <%= form_for @order, url: user_orders_path do |f| %>
 
-        <div class="field">
-         <font size="5"><%= f.label :現在配送先となってる登録住所 %></font>
-         <font size="5"><%= @order.user.address %></font>
-        </div>
-
         <div>
-          <%= f.label :配送先を変えたい方はこちらに入力してください %>
+           <font size="5"><%= f.label :※配送先を変更したい場合のみ書き直してください %></font>
           <%= f.text_area :address, class:"order_adress" %>
         </div>
 
