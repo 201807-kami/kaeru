@@ -1,8 +1,8 @@
-<div class="container">
+<% @crumbs = [{title: '注文一覧', path: admin_orders_path}, {title: '注文詳細'}] %>
   <div class="bg-white">
     <table class="table table-bordered">
       <tr>
-        <th>ID</th>
+        <th class="table-secondary">ID</th>
         <td><%= @order.id %></td>
         <th class="table-secondary">購入日時</th>
         <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
@@ -11,9 +11,22 @@
       </tr>
     </table>
   </div>
-          
+
   <div class="row">
-    <div class="col-10">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          配送先
+        </div>
+        <div class="card-body">
+          <%= @order.user.address %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
       <div class="card">
         <div class="card-header">
           注文商品
@@ -63,6 +76,6 @@
       </div>
     </div>
   </div>
-</div>
+
 
 

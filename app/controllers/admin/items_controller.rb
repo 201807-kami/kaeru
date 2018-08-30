@@ -1,5 +1,4 @@
-class Admin::ItemsController < ApplicationController
-	layout 'admin'
+class Admin::ItemsController < Admin::AdminBase
 	include ItemsHelper
 	
 	def index

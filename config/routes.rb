@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
 	namespace :admin, path: 'admin' do
 		root 'home#index', as: :root
-		resources :admins, only: [:index, :new, :create, :edit, :update, :delete]
+		resources :admins, only: [:index, :new, :create, :edit, :update, :destroy]
 		resources :items
 		resources :artists do
 			get :autocomplete_artist_name, on: :collection
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 			get :autocomplete_label_name, on: :collection
 		end
 		resources :genres
-		resources :users, only: [:index, :show, :edit, :update]
+		resources :users, only: [:index, :show, :edit, :update, :destroy]
 		resources :recommended_items
 		resources :orders 
 	end

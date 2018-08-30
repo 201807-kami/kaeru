@@ -3,47 +3,112 @@
 <html>
 	<head>
 		<title>kaeru</title>
+    <meta content ="text/html">
 		<%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-		<%= stylesheet_link_tag    'admin', media: 'all' %>
-		
+		<%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
 	</head>
-	<body>
-		<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
-      <header class="app-header navbar">
-        <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto", type = "button">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <%= link_to 'はろー', admin_root_path, class: 'navbar-brand' %>
-        <button class="navbar-toggler sidebar-toggler d-md-down-none", type = "button" >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <ul class="nav navbar-nav ml-auto mr-3">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle nav-link" aria-expanded = "false", aria-haspopup = "true", data-toggle = "dropdown", :href = "#", :role = "button" >
-              <span class="d-md-down-none">こじま</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-header text-center">
-                <strong>アカウント</strong>
+  <% if admin_signed_in? %>
+  	<body>
+  		<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+        <header class="app-header navbar">
+          <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto", type = "button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <%= link_to 'はろー', admin_root_path, class: 'navbar-brand' %>
+          <button class="navbar-toggler sidebar-toggler d-md-down-none", type = "button" >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <ul class="nav navbar-nav ml-auto mr-3">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle nav-link" aria-expanded = "false", aria-haspopup = "true", data-toggle = "dropdown", href = "#", role = "button" >
+                <span class="d-md-down-none"><%= current_admin.name %></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-header text-center">
+                  <strong>アカウント</strong>
+                </div>
+                <%= link_to edit_admin_admin_path(current_admin), class: 'dropdown-item' do %>
+                  <i class="fa fa-user"></i>
+                  設定変更
+                <% end %>
+                <%= link_to destroy_admin_session_path, method: :delete, class: 'dropdown-item' do %>
+                  <i class="fa fa-sign-out"></i>
+                  ログアウト
+                <% end %>
               </div>
-              
-                <i class="fa fa-user">
-                設定変更
-              	</i>
-              
-              
-                <i class="fa fa-sign-out">
-                ログアウト
-              	</i>
-              
+            </li>
+          </ul>
+        </header>
+        <div class="app-body">
+          <div class="sidebar">
+            <nav class="sidebar-nav">
+              <ul class="nav">
+                <li class="nav-item">
+                  <%= link_to admin_root_path, class: 'nav-link' do%>
+                  ホーム
+                  <% end %>
+                </li>
+                <li class="nav-title">商品</li>
+                <li class="nav-item">
+                  <%= link_to admin_items_path, class: "nav-link active" do%>
+                  商品
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_artists_path, class: "nav-link active" do%>
+                  アーティスト
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_genres_path, class: "nav-link active" do%>
+                  ジャンル
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_labels_path, class: "nav-link active" do%>
+                  レーベル
+                  <% end %>
+                </li>
+                <li class="nav-title">おすすめ</li>
+                <li class="nav-item">
+                  <%= link_to admin_recommended_items_path, class: "nav-link active" do%>
+                  おすすめ商品
+                  <% end %>
+                </li>
+                <li class="nav-title">注文</li>
+                <li class="nav-item">
+                  <%= link_to admin_orders_path, class: "nav-link active" do%>
+                  注文
+                  <% end %>
+                </li>
+                <li class="nav-title">アカウント</li>
+                <li class="nav-item">
+                  <%= link_to admin_users_path, class: "nav-link active" do%>
+                  会員
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_admins_path, class: "nav-link active" do%>
+                  管理者
+                  <% end %>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <main class="main">
+            <%= admin_breadcrumb(@crumbs) if @crumbs.present? %>
+            <div class="container-fluid mt-3">
+              <%= yield %>
             </div>
-          </li>
-        </ul>
-      </header>
-
-		<%= yield %>
-    <%= javascript_include_tag 'admin/admin' %>
-    <%= yield :javascript %>
-	</body>
+          </main>
+        </div>
+      <%= javascript_include_tag 'admin/admin', 'data-turbolinks-track': 'reload' %>
+      <%= yield :javascript %>
+    </body>
+  <% else %>
+    <body>
+      <%= yield %>
+    </body>
+  <% end %>
 </html>

@@ -1,5 +1,4 @@
-class Admin::LabelsController < ApplicationController
-	layout 'admin'
+class Admin::LabelsController < Admin::AdminBase
 
 	def index
 		@labels = Label.all
