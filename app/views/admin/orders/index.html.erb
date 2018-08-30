@@ -50,7 +50,7 @@
 						<tr>
 							<td><%= order.id %></td>
 							<td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-							<td><%= order.user.email %></td>
+							<td><%= order.user.email if order.user.present? %></td>
 							<td><%= order.item_amount %></td>
 							<td><% order.order_items.each_with_index do |order_item| %>
 	                <%= order_item.item.title %>: <%= order_item.quantity %></td>

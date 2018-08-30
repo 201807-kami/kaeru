@@ -23,8 +23,7 @@ class Admin::UsersController < Admin::AdminBase
 
   def destroy
     @user = User.find(params[:id])
-    @user.leave
-    flash[:success] = '退会処理が完了しました'
+    @user.destroy
     redirect_to admin_users_path(session[:search_params])
   end
 

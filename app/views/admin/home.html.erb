@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-3">
+    <div class="card">
+      <h6 class="card-header bg-info">
+          <i class="fa fa-yen"></i>
+          今月の売上
+      </h6>
+      <div class="card-body text-center">
+        <p class="m-0 lead">￥<%= @current_month_order_summary %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="card">
+      <%= link_to admin_orders_path(search: {status: '受付中'}), class: 'text-white' do %>
+        <h6 class="card-header bg-info">
+          <i class="fa fa-truck"></i>
+          出荷待ち
+          <i class="fa fa-angle-right fa-lg ml-2"></i>
+        </h6>
+      <% end %>
+      <div class="card-body text-center">
+        <p class="m-0 lead">
+          <%= @undelivered_counts %>
+          <span class="small text-muted"> 件</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="card">
+        <h6 class="card-header bg-info">
+        <i class="fa fa-user"></i>
+        会員数
+        </h6>
+      <div class="card-body text-center">
+        <p class="m-0 lead">
+          <%= @user_counts %>
+          <span class="small text-muted"> 人</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="card">
+        <h6 class="card-header bg-info">
+        <i class="fa fa-cubes"></i>
+        販売アイテム
+        </h6>
+      <div class="card-body text-center">
+        <p class="m-0 lead">
+          <%= @selling_item_counts %>
+          <span class="small text-muted"> 種類</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+    <div class="card">
+        <h6 class="card-header bg-info">
+        <i class="fa fa-cubes"></i>
+        販売アイテム
+        </h6>
+      <div class="card-body text-center">
+        <p class="m-0 lead">
+          <%= @selling_item_counts %>
+          <span class="small text-muted"> 種類</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="card">
+      <%= link_to admin_items_path(search: {stock: 5, stock_type: :less, statuses: ['selling']}) do %>
+        <h6 class="card-header bg-warning">
+          <i class="fa fa-thermometer-empty"></i>
+          在庫数が5以下の商品
+          <i class="fa fa-angle-right fa-lg ml-1"></i>
+        </h6>
+      <% end %>
+      <% if @limit_stock_items.size == 0 %>
+        <div class="card-body">ありません</div>
+      <% else %>
+        <ul class="list-group list-group-flush">
+          <% @limit_stock_items.each do |item| %>
+            <%= link_to edit_admin_item_path(item) do %>
+              <div class="row py-2">
+                <div class="col-2">
+                  <%= image_tag item.item_image, class: 'img-fluid ml-2' %>
+                </div>
+                <div class="col-10">
+                  <span><%= item.name %></span>
+                  <br>/
+                  <span>残り<%= item.stock %>個</span>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>

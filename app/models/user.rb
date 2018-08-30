@@ -4,13 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-        # belongs_to :cart
-        has_many :items
-        has_many :carts
-        has_many :orders
-
-
-
+  # belongs_to :cart
+  has_many :items
+  has_many :carts
+  has_many :orders
   has_many :favorites
   has_many :items, through: :favorites
 

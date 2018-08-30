@@ -43,7 +43,7 @@ $(document).ready(function($){
       $(this).addClass('active');
 
       $(this).parents('ul').add(this).each(function(){
-        $(this).parent().addClass('open');
+        $(this).parent().addClass('show');
       });
     }
   });
@@ -56,7 +56,7 @@ $(document).ready(function($){
     }
 
     if ($(this).hasClass('nav-dropdown-toggle')) {
-      $(this).parent().toggleClass('open');
+      $(this).parent().toggleClass('show');
       resizeBroadcast();
     }
 
