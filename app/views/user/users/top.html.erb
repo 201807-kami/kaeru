@@ -14,6 +14,29 @@
         </div>
 
 
+<h4> ランキング </h4>
+<table class="table">
+        <thead>
+            <tr>
+                <th>１位</th>
+                <th>２位</th>
+                <th>３位</th>
+                <th>４位</th>
+                <th>５位</th>
+            </tr>
+        </thead>
+
+        <tbody>
+           <% @rank_items.each do |rank| %>
+           <th>
+              <%= attachment_image_tag rank, :item_image, :fill, 130, 130, format: 'jpeg', class: "profile-img center-block" %>
+              <p><%= link_to rank.title, user_item_path(rank.id) %></p>
+              <p><%= rank.artist.name %></p>
+              <% end %>
+          </th>
+        </tbody>
+    </table>
+
 
 <div class="text-center">
 

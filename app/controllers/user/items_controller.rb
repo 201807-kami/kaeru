@@ -38,7 +38,10 @@ class User::ItemsController < ApplicationController
 
 # 	def rank
 #       @rank = Item.find(Item.group(:item_id).order('count(item_id) desc').limit(5).pluck(:item_id))
-# 　  end
+# 　end
+
+
+
 
 	def index
       @items = Item.search(params[:search])
